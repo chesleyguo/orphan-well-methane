@@ -10,3 +10,6 @@ data/raw_*/
 
 # local notes — never commit
 docs/private/
+
+# local working notes for Claude — never commit
+CLAUDE.md

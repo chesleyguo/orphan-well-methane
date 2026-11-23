@@ -49,7 +49,11 @@ Excluded or undecided: calculated (13), FID (4), other/unspecified (60), "ND" (7
    of the rate likelihood; they should never be read as 0 g/h. DOI's own rule assumes non-detects are
    ≤ 1 g/h, but 0 detections in 577 Sensit and Bascom Turner screenings is far below what other methods
    find, so that assumption looks too optimistic here.
-5. **Rounding.** Recurring values (0.004, 0.01, 1.0, 1.69 g/h) should be treated as interval-censored.
+5. **Rounding, quantization and averaging.** Recurring values are not all rounding. Louisiana
+   Hi-Flow values are multiples of ~1.15 g/h (0.001 cfm), so treat them as intervals of that width.
+   New Mexico's 1.69 g/h (11 wells, O'Brien field) is a field average assigned to unmeasured wells,
+   not a measurement. Florida's 1 g/h values look like "<1 g/h" non-detects. Values 0.004 and 0.01
+   remain interval-censored at their rounding precision. See D21-D22 and `docs/state_policies.md`.
 
 ## Sources
 

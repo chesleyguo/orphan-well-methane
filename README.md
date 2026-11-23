@@ -16,7 +16,7 @@ data/reference/      literature-based reference tables (detection limits)
 data/processed/      outputs of src/01–08 (regenerated; *.pkl are intermediates)
 outputs/             tables and run log
 src/                 analysis scripts, run in numeric order from the repo root
-docs/                data notes, detection limits, decision log
+docs/                data notes, detection limits, state policies, decision log
 ```
 
 ## Reproduce
@@ -31,6 +31,7 @@ python src/05_attribute_value.py
 python src/06_driscoll_pairing.py
 python src/07_export_tables.py
 python src/08_detection_empirical.py    # detection by refined method group
+python src/09_policy_crosscheck.py      # state measurement patterns vs policy
 ```
 
 `src/00_download.py <date>` re-downloads everything into a new, separately dated folder; it never

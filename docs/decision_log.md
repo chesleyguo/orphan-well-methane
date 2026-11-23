@@ -92,6 +92,31 @@ DOI record names Bacharach; 350 name Semtech, and California's "Hi-Flow 2/II" is
 name. Records that do not name a model (LA "Hiflow/Method 21", "High Flow Sampling") are assumed to be
 the same instrument; a sensitivity run can widen the upper-tail error for them.
 
+## 2026-11-23 — state and federal policy review (docs/state_policies.md)
+
+**D19. Measurement regime depends on grant type and date.** Initial grants carried no methane
+requirement; formula grants from July 2023 required screening and, on detection, before/after rate
+measurement; from July 2025 measurement is optional and estimates are allowed. The DOI layer has no
+grant-type field, so the measurement model uses state x period (before/after 2025-07-11) as the
+regime indicator. Share of records with any value: 0.69 before, 0.49 after.
+
+**D20. Zeros are not all measurements.** Values of 0 with no recorded method are treated as missing
+(not measured). Zeros recorded with a handheld concentration detector (IN, PA, AZ) are non-detects
+with the screening limit of that device. Zeros recorded with OGI are non-detects at 20-150 g/h.
+About 4,100 records in KS, IL, NE, AR, IN, PA, AZ and MS have only zeros.
+
+**D21. Field-averaged values are excluded from the likelihood.** New Mexico assigned field averages
+to unmeasured wells (O'Brien field). Positive values repeated three or more times within a state
+are flagged (`outputs/state_measurement_crosscheck.csv`); the NM repeats are dropped from the
+measurement likelihood and kept only as evidence that the well was plugged.
+
+**D22. Louisiana Hi-Flow values are interval-censored at ~1.15 g/h steps** (0.001 cfm resolution);
+Florida values of exactly 1 g/h are treated as "<1 g/h".
+
+**D23. Selection may depend on emissions.** NM used pre-plugging methane to choose wells; LA and NY
+score observed gas leaks; PA selection is by pluggers (shallow, capped-cost wells). The selection
+model allows dependence on emissions through leak indicators and models PA separately.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
 - Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and
@@ -99,4 +124,5 @@ the same instrument; a sensitivity run can widen the upper-tail error for them.
 - High-emitter threshold (currently 10 g/h).
 - Treatment of the two ~46 kg/h Adams County, CO wells (keep; report leave-top-k-out).
 - Spatial-block size for cross-validation (currently 0.5°).
+- Requests to OK OCC (meaning of 0), IDNR (IL zeros), KGS (KY measured wells), LDENR (below).
 - What LA's "Hiflow/Method 21" means in practice: Method 21 screening first and Hi-Flow only on hits, or both on every well (ask LDENR).

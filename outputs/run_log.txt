@@ -123,3 +123,36 @@ federal guidelines (instrument unspecified)  259                                
 
 method strings: 76 -> outputs/method_string_audit.csv
 Hi-Flow records by named model: {'Hi-Flow 2/II, maker not named': 238, 'Semtech Hi-Flow 2 (named)': 350, 'model not named': 387, 'All': 975}
+== 09
+state  records  with_value  share_with_value_before_2025_07  share_with_value_after_2025_07  records_after_2025_07  share_zero_of_values  share_no_method_of_values  share_above_1g_h                 repeated_positive_values
+   KS     2569        2568                             1.00                            1.00                      1                  1.00                       1.00              0.00                                         
+   TX     1923         846                             0.58                            0.09                    552                  0.99                       0.92              0.01                                     1 x3
+   WY     1300           2                             0.00                            0.00                    179                  0.50                       1.00              0.00                                         
+   OK     1267        1234                             0.98                            0.80                     51                  0.97                       0.92              0.03                                         
+   KY      921           1                             0.00                            0.00                    283                  1.00                       0.00              0.00                                         
+   LA      797         665                             0.83                            0.85                    113                  0.78                       0.00              0.12 0.004 x12; 1.1504 x8; 0.01 x8; 2.3008 x6
+   IL      786         282                             0.01                            1.00                    275                  1.00                       1.00              0.00                                         
+   IN      414         414                             1.00                             NaN                      0                  1.00                       0.09              0.00                                         
+   NE      406         406                             1.00                            1.00                     18                  1.00                       0.99              0.00                                         
+   WV      342         331                             1.00                            0.92                    120                  0.82                       0.61              0.16                                         
+   CA      331         326                             0.98                            0.99                    144                  0.86                       0.06              0.10                                         
+   CO      328         124                             0.30                            0.57                     99                  0.34                       0.01              0.63                               1 x3; 5 x3
+   MI      314         310                             0.98                            1.00                     52                  0.96                       0.55              0.04                                         
+   AR      251         147                             0.39                            0.99                     82                  1.00                       1.00              0.00                                         
+   PA      250         226                             1.00                            0.52                     50                  1.00                       0.05              0.00                                         
+   MT      246         244                             0.99                            1.00                     48                  0.98                       0.95              0.01                                         
+   NM      217         206                             0.99                            0.88                     76                  0.40                       0.00              0.30     0.01 x11; 1.69 x11; 0.82 x5; 0.05 x4
+   OH      173           8                             0.02                            0.14                     37                  0.25                       0.00              0.50                                         
+   ND       81           0                             0.00                            0.00                      8                   NaN                        NaN               NaN                                         
+   AZ       54          51                             0.90                            1.00                     23                  1.00                       0.20              0.00                                         
+   NY       35          35                             1.00                            1.00                      2                  0.34                       0.00              0.54                                         
+   AL       19           6                              NaN                            0.32                     19                  0.33                       0.00              0.67                                         
+   UT       18           9                             0.67                            0.17                      6                  0.22                       0.78              0.78                                         
+   FL       18          18                             1.00                            1.00                      8                  0.67                       0.00              0.00                                     1 x6
+   MS       17          17                             1.00                            1.00                      1                  1.00                       0.06              0.00                                         
+  N/A       15          15                             1.00                            1.00                      6                  1.00                       0.00              0.00                                         
+   AK       11           3                             0.00                            0.50                      6                  0.00                       0.00              1.00                                         
+   TN        5           5                             1.00                             NaN                      0                  0.00                       0.00              1.00                                         
+
+states where every reported value is 0 (>=10 values): KS, IL, IN, NE, AR, PA, AZ, MS, N/A | records: 4126
+records with a value: before change 0.69, after 0.49
