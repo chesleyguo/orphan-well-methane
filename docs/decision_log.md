@@ -151,6 +151,16 @@ and 0.37 for p_find; 6 of 215 real summaries fall outside the 99% prior predicti
 states with very few measured wells (NY, OH, NM screening, AL, MT). The 5 Driscoll-DOI pairs are not
 yet simulated.
 
+**D27. NPE trial run (src/14, outputs/npe_trial/; not part of the deterministic pipeline).** 20,000
+simulations from the skeleton simulator, neural spline flow posterior (sbi 0.27, PyTorch 2.15 CPU),
+SBC on 200 held-out simulations. 10 of 13 parameters pass (chi-square p > 0.05 on 10 rank bins);
+log_sigma0 fails (p < 0.001, mean rank 0.43: slight upward bias), m0 (p = 0.011) and b_gas (p = 0.041)
+are borderline. Posterior SD / prior SD: 0.27-0.34 for d0, m0, log_sigma0; 0.94-0.97 for tau_a and
+tau_m (between-state spread barely learned). Real-data values are a pipeline check only; the
+"average state" quantities are not comparable with the pilot's pooled-sample quantities.
+Next: more simulations and summary refinement until SBC passes for all parameters, as the
+analysis plan requires before any real-data result is used.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
 - Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and

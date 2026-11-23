@@ -35,6 +35,9 @@ python src/09_policy_crosscheck.py      # state measurement patterns vs policy
 python src/10_external_mt.py            # USGS Montana measurements vs inventory and DOI
 python src/11_pilot_censored.py         # PRELIMINARY pilot: censoring-corrected distribution, value of screening
 python src/12_sim_prior_check.py        # simulator skeleton (src/sim/): timing, prior predictive, parameter information
+# not in the deterministic pipeline (long-running / network):
+python src/13_nm_ocd_memos.py           # NM OCD contractor methane memos (download, text, parse)
+python src/14_npe_trial.py              # TRIAL neural posterior estimation + SBC (needs torch, sbi)
 ```
 
 `src/00_download.py <date>` re-downloads everything into a new, separately dated folder; it never
