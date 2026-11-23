@@ -33,6 +33,7 @@ python src/07_export_tables.py
 python src/08_detection_empirical.py    # detection by refined method group
 python src/09_policy_crosscheck.py      # state measurement patterns vs policy
 python src/10_external_mt.py            # USGS Montana measurements vs inventory and DOI
+python src/11_pilot_censored.py         # PRELIMINARY pilot: censoring-corrected distribution, value of screening
 ```
 
 `src/00_download.py <date>` re-downloads everything into a new, separately dated folder; it never

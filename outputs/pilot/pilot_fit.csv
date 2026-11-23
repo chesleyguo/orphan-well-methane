@@ -1,0 +1,4 @@
+estimate,n,share_leaking,median_leaker_g_h,mean_g_h,P_gt_1,P_gt_10,P_gt_100,mu,sigma,pi_not_leaking,share_leaking_lo,share_leaking_hi,median_leaker_g_h_lo,median_leaker_g_h_hi,mean_g_h_lo,mean_g_h_hi,P_gt_1_lo,P_gt_1_hi,P_gt_10_lo,P_gt_10_hi,P_gt_100_lo,P_gt_100_hi
+quantified wells only (as in RFF 2026),507,1,8.0529,421.69,0.729783,0.477318,0.211045,,,,,,,,,,,,,,,
+non-detects as zero (as in DOI averages),2308,0.219671,8.0529,92.633,0.160312,0.104853,0.0463605,,,,,,,,,,,,,,,
+censoring-corrected hurdle model (pilot),2308,0.593149,0.148316,170.07,0.19889,0.103216,0.0434853,-1.90841,4.48731,0.406851,0.531025,0.676394,0.0663434,0.275954,124.556,224.803,0.186039,0.214007,0.0944724,0.112009,0.0380721,0.0488495

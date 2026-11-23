@@ -176,3 +176,15 @@ USGS MT: sessions 56, wells with emission data 15, wells with coordinates 19
 25-101-10077      Lorenzen 6         1                  17.6             17.6             17.6                    True           False         3184.0
 in 2022 inventory: 15/15 | in DOI plugged records: 0 | nearest DOI record: min 904 m
 median between-session CV (wells with >=3 sessions): 0.65
+== 11
+pilot sample: 2308 wells (507 detects, 1801 non-detects), 19 states
+hurdle fit: share not leaking 0.41 | leakers: median 0.15 g/h, sigma 4.49
+                                estimate    n  share_leaking  median_leaker_g_h  mean_g_h  P_gt_1  P_gt_10  P_gt_100
+  quantified wells only (as in RFF 2026)  507              1              8.053     421.7  0.7298   0.4773     0.211
+non-detects as zero (as in DOI averages) 2308         0.2197              8.053     92.63  0.1603   0.1049   0.04636
+censoring-corrected hurdle model (pilot) 2308         0.5931             0.1483     170.1  0.1989   0.1032   0.04349
+value per g/h abated: $179 (PV, 25 yr, 6.4%/yr decline, 2% discount)
+plug 10%: break-even $/screened well at L=0.01: 30414 | L=1: 30414 | L=50: 30191
+plug 30%: break-even $/screened well at L=0.01: 23723 | L=1: 23714 | L=50: 23482
+median reported plugging cost per well, all states: $24678
+figures written to outputs/pilot

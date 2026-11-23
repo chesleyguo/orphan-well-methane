@@ -124,6 +124,13 @@ chosen because they leak, so they are not a random sample of unplugged wells. Be
 variation (median CV 0.65 for wells measured three or more times) informs the single-visit
 measurement-noise prior. The data release swaps the latitude and longitude column names.
 
+**D25. Pilot only (src/11, outputs/pilot/).** A pooled hurdle model (share not leaking + lognormal
+leak rates, capped at 50 kg/h) with one censoring limit per method, and a screening simulation
+(one noisy visit, CV 0.65; plug the top-ranked 10% or 30% vs a random choice; social cost of methane
+$1,900/t, 25 years, 6.4%/yr decline, 2% discount). It ignores selection, state differences and the
+Hi-Flow leak-finding stage. Its numbers are for discussion, not results; the planned analysis
+replaces it.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
 - Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and
