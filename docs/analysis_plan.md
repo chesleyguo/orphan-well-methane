@@ -75,6 +75,10 @@ prior.
 4. Detection: reported positive if F_i = 1 and Y_i > L_m, with log L_m ~ Normal(log of the midpoint, 0.5)
    from `data/reference/detection_limits.csv`; otherwise reported as zero / non-detect.
 5. Rounding and quantization as interval censoring (Section 2).
+6. Reporting error between the contractor's reading and the program record (D28): with probability
+   omega a measured leak is recorded as zero, omega ~ Beta(1, 30); otherwise the recorded value is the
+   reading times exp(r), r ~ Normal(0, s_r), s_r ~ Normal+(0, 0.3). Priors checked against the 202 New
+   Mexico memo-record pairs (4 recorded as zero, most within 5%).
 
 External calibration enters as additional observations of the same model: the 5 Driscoll pairs
 (chamber reading with L = 0.001 g/h and p_find = 1, plus the DOI reading at the later visit), the
@@ -135,4 +139,4 @@ visits for s_v only (those wells were chosen because they leak).
 
 ## Deviations log
 
-(none yet)
+(none yet; draft edited on 2026-11-23 before freezing to add the reporting-error term, D28)
