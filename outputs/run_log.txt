@@ -200,3 +200,29 @@ plug 10%: break-even $/screened well at L=0.01: 30414 | L=1: 30414 | L=50: 30191
 plug 30%: break-even $/screened well at L=0.01: 23723 | L=1: 23714 | L=50: 23482
 median reported plugging cost per well, all states: $24678
 figures written to outputs/pilot
+== 12
+states: 25 | inventory wells: 112716 | DOI wells: 13021 | summaries: 209 | parameters: 13
+seconds per simulation: 0.010 (10,000 sims ~ 2 min)
+summaries outside the 99% prior predictive range: 5 of 209
+         summary  observed  prior_q05  prior_q50  prior_q95  quantile_of_observed
+      cell_sd_TN     0.000      0.006      0.047      0.223                 0.004
+ detect_quant_NY     1.000      0.000      0.072      0.546                 0.996
+ detect_quant_OH     1.000      0.000      0.077      0.572                 0.997
+detect_screen_OH     1.000      0.000      0.029      0.445                 1.000
+       logq90_MT     6.564    -12.000    -12.000    -12.000                 0.998
+
+parameter information (max |Spearman| between parameter and any summary):
+ parameter  max_abs_rank_corr most_informative_summary
+        a0               0.67             detect_other
+     tau_a               0.34  between_state_sd_detect
+     b_gas               0.37               detect_gas
+        m0               0.84            pooled_logq50
+     tau_m               0.24  between_state_sd_logq50
+     g_gas               0.15               detect_gas
+log_sigma0               0.62            pooled_logq99
+        d0               0.73            plug_share_WV
+     tau_d               0.87    between_state_sd_plug
+     tau_u               0.70               cell_sd_PA
+       rho               0.37          detect_quant_NM
+    p_find               0.25          detect_quant_CA
+       s_v               0.07              measured_WV

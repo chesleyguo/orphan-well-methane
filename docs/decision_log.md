@@ -136,6 +136,16 @@ leak-finding stage must be modeled explicitly; (ii) fitted separately, states di
 identified (CA hits the boundary), so the full model must be hierarchical across states and use
 external calibration (Driscoll chamber pairs, KGS, USGS MT).
 
+**D26. Simulator skeleton (src/sim/model.py, v0.1).** Implements the analysis plan's generative
+model with 13 global parameters; state effects are nuisance latents; attributes reduced to a gas-well
+indicator and 0.5-degree cells; methods drawn from each state's empirical mix (period split not yet
+used). 209 summaries computed by the same function for real and simulated data; 0.01 s per
+simulation. Prior predictive check: 5 of 209 real summaries fall outside the 99% range, all in
+states with very few measured wells (NY, OH, TN, MT). Marginal information check: the between-visit
+noise s_v and the leak-finding probability p_find are barely informed by the program summaries
+(|rank correlation| 0.07 and 0.25), as expected; the next version adds the Driscoll pairs and the
+Montana repeat visits to the simulator to identify them.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
 - Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and

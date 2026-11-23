@@ -38,6 +38,7 @@ Snapshot date: 2026-11-22. Data-handling choices are logged in `docs/decision_lo
 - `outputs/usgs_mt_wells.csv` — per-well summary, linkage to the 2022 inventory and nearest DOI record (src/10).
 - `outputs/pilot/` — PRELIMINARY pilot (src/11, D25): fitted distributions, break-even screening cost, state plugging-cost summary, two figures.
 - Plugging cost (`total_cost_complete_pa`): reported for 12,018 wells, median $24,678, but in KS, WV, OH, KY, PA most values repeat (contract averages, not well-specific); MI reports cost for 4% of wells and those look like project totals.
+- `outputs/sim/` — simulator checks (src/12, D26): prior_predictive.csv, parameter_information.csv.
 - `outputs/state_measurement_crosscheck.csv` — per state: share with a value before/after July 2025, zero share, no-method share, repeated positive values (src/09).
 - `data/reference/state_policies.csv` — per-state prioritization and measurement practice with sources; narrative in `docs/state_policies.md`.
 - `outputs/hiflow_model_by_state.csv` — Hi-Flow maker/model named in DOI method strings, by state.
