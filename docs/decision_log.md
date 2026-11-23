@@ -164,6 +164,20 @@ issue, not a model defect. The between-state spreads tau_a, tau_m remain barely 
 SD 0.89-0.98); the full model needs state-level external data or tighter priors for them.
 The analysis plan's validation (MCMC comparison, leave-one-state-out) is still to come.
 
+**D28. New Mexico contractor memos (src/13, outputs/nm_memo_audit.csv).** Downloaded the OCD well
+files (2,256 PDFs filed since June 2022, text kept, 5 MB gzip) for all 217 NM program wells. 203 have
+a contractor methane memo, mostly Well Done Foundation with a Ventbuster ultra-low flow meter
+(111 wells name it). Findings:
+- Field averaging confirmed: 11 O'Brien Fee 18/19 wells carry a field average (memo 1.67 g/h,
+  DOI 1.69 g/h), as inferred in D21; 3 more memos mention averaging but report zero.
+- 170 of 202 memo values agree with the DOI value within 5%. Of the rest: 4 wells are 0 in DOI but
+  11-267 g/h in the memo (Clovis K Kendrick #001, Pitts Kendrick #001, Cortland Myers #002, #003); for
+  several large emitters DOI is 20-55% below the memo; the others are small values or parser limits
+  (128 memos are forms whose pre/post type the parser cannot tell).
+Decision: the measurement model gets a reporting-error term (a small probability that a measured
+leak is reported as zero, and a multiplicative error on reported values), with priors from these
+202 pairs; the analysis plan will be updated before freezing.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
 - Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and

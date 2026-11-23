@@ -8,7 +8,7 @@ Polite: one request at a time with a pause.
 
 Usage (from repo root): python src/13_nm_ocd_memos.py [--limit N] [--minutes M]
 """
-import sys, pathlib, time, json, re, subprocess, tempfile, argparse, urllib.request
+import sys, pathlib, time, json, re, subprocess, tempfile, argparse, urllib.request, gzip
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from config import *
 
@@ -20,7 +20,8 @@ ap.add_argument('--minutes', type=float, default=9.0)
 ap.add_argument('--parse-only', action='store_true')
 args = ap.parse_args()
 
-CACHE = STATES / 'nm_ocd_memos.jsonl'
+CACHE = STATES / 'nm_ocd_memos.jsonl'          # working cache (gitignored); a gzip copy is committed
+GZ = STATES / 'nm_ocd_memos.jsonl.gz'
 LISTS = STATES / 'nm_ocd_listings.json'
 UA = {'User-Agent': 'Mozilla/5.0 (research; orphan-well-methane)'}
 PAUSE = 0.5
@@ -41,6 +42,8 @@ if args.limit:
 
 listings = json.load(open(LISTS)) if LISTS.exists() else {}
 done = set()
+if not CACHE.exists() and GZ.exists() and not args.parse_only:
+    CACHE.write_bytes(gzip.decompress(GZ.read_bytes()))
 if CACHE.exists():
     done = {json.loads(l)['url'] for l in open(CACHE)}
 
@@ -75,31 +78,50 @@ if not args.parse_only:
     print('wells listed: %d of %d | PDFs cached: %d' % (sum(a in listings for a in apis), len(apis), len(done)))
 
 # ---- parse -------------------------------------------------------------------------------
-recs = [json.loads(l) for l in open(CACHE)] if CACHE.exists() else []
-num = r'([0-9]+(?:\.[0-9]+)?)'
+recs = ([json.loads(l) for l in open(CACHE)] if CACHE.exists()
+        else [json.loads(l) for l in gzip.open(GZ, 'rt')] if GZ.exists() else [])
+num = r'([0-9][0-9,]*(?:\.[0-9]+)?)'
+f = lambda m: float(m.group(1).replace(',', '')) if m else None
+PRE_PATS = [r'emission rate in grams per hour \(g/hr\)\s*' + num, r'Average CH4 Mass\s*' + num + r'\s*g/hr',
+            r'calculated at\s*' + num + r'\s*(?:grams per hour|g/hour)',
+            r'Calculated Average Wellhead Methane Gas Emissions:\s*' + num]
 rows = []
 for r in recs:
     t = ' '.join(r['text'].split())
     if not re.search(r'methane', t, re.I):
         continue
-    pre = bool(re.search(r'pre[- ]plug', t, re.I))
-    avg = bool(re.search(r'averaged and applied|field averaging|were not measured|average[d]? .{0,40}applied to', t, re.I))
-    m = (re.search(r'emission rate in grams per hour \(g/hr\)\s*' + num, t, re.I)
-         or re.search(r'Average CH4 Mass\s*' + num + r'\s*g/hr', t, re.I)
-         or re.search(r'calculated at\s*' + num + r'\s*grams per hour', t, re.I)
-         or re.search(r'Calculated Average Wellhead Methane Gas Emissions:\s*' + num, t, re.I))
+    mpre = re.search(r'Pre-?Plug(?:ging)? Methane (?:Monitoring|Quantification)', t, re.I)
+    mpost = re.search(r'Post-?Plug(?:ging)? Methane Monitoring', t, re.I)
+    kind = ('pre' if mpre and (not mpost or mpre.start() < mpost.start())
+            else 'post' if mpost else 'other')
+    val = None
+    # a post-plugging memo restates the pre-plugging rate only in these phrasings
+    pats = PRE_PATS if kind != 'post' else [PRE_PATS[3], r'Pre-Plugging[^.]{0,400}?calculated at\s*' + num]
+    for pat in pats:
+        val = f(re.search(pat, t, re.I))
+        if val is not None:
+            break
     dur = re.search(r'Flow Duration\s*([0-9]+)\s*hrs?', t, re.I)
-    rows.append({'api': r['api'], 'url': r['url'], 'pre_plugging_memo': pre, 'field_average': avg,
-                 'reported_g_h': float(m.group(1)) if m else None,
-                 'flow_duration_h': float(dur.group(1)) if dur else None,
+    rows.append({'api': r['api'], 'url': r['url'], 'memo_type': kind,
+                 'field_average': bool(re.search(r'averaged and applied|field averaging|were not measured', t, re.I)),
+                 'reported_g_h': val, 'flow_duration_h': float(dur.group(1)) if dur else None,
                  'ventbuster': bool(re.search(r'Ventbuster', t, re.I)),
                  'contractor_wdf': bool(re.search(r'Well Done', t, re.I))})
 memo = pd.DataFrame(rows)
 if len(memo):
-    per = memo.groupby('api').agg(memos=('url', 'size'), any_pre=('pre_plugging_memo', 'any'),
-                                  field_average=('field_average', 'any'), ventbuster=('ventbuster', 'any'),
-                                  memo_g_h=('reported_g_h', lambda s: s.dropna().iloc[0] if s.notna().any() else None),
-                                  flow_duration_h=('flow_duration_h', 'max')).reset_index()
+    def pick(g):
+        for kind in ('pre', 'post', 'other'):          # prefer the pre-plugging memo's value
+            v = g.loc[(g.memo_type == kind) & g.reported_g_h.notna(), 'reported_g_h']
+            if len(v):
+                return v.iloc[0], kind
+        return None, None
+    per = []
+    for api, g in memo.groupby('api'):
+        v, src = pick(g)
+        per.append({'api': api, 'memos': len(g), 'pre_memo': (g.memo_type == 'pre').any(),
+                    'field_average': g.field_average.any(), 'ventbuster': g.ventbuster.any(),
+                    'memo_g_h': v, 'value_from': src, 'flow_duration_h': g.flow_duration_h.max()})
+    per = pd.DataFrame(per)
     nm1 = nm.drop_duplicates('api14')[['api14', 'name', 'methane_pre_plugging_emissions', 'methane_detection_method']]
     out = nm1.merge(per, left_on='api14', right_on='api', how='left')
     out.to_csv(OUT / 'nm_memo_audit.csv', index=False)
