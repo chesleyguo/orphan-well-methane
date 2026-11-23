@@ -1,0 +1,1118 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>Karl B. Haase</origin>
+        <origin>Nicholas J. Gianoutsos</origin>
+        <origin>Justin E. Birdwell</origin>
+        <origin>Jody B. Wycech</origin>
+        <origin>Mark F.  Dreier</origin>
+        <origin>Zachary K. Lowry</origin>
+        <pubdate>20250312</pubdate>
+        <title>Data from Methane Emission Measurements and Isotope Geochemistry Samples from Orphan Oil and Gas Wells on the Kevin-Sunburst Dome in Montana, U.S.A., from April 2021 to October 2023</title>
+        <edition>1</edition>
+        <geoform>tabular digital data</geoform>
+        <pubinfo>
+          <pubplace>Reston, VA</pubplace>
+          <publish>U.S. Geological Survey</publish>
+        </pubinfo>
+        <onlink>https://doi.org/10.5066/P13A7RXN</onlink>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>This dataset contains methane emissions measurements, gas compositions, and methane carbon isotope geochemistry analysis results from orphan oil and gas wells in the Kevin-Sunburst Dome in Toole County, Montana. Emissions measurements were taken between 2021 and 2023, and gas samples were collected in July, 2023.</abstract>
+      <purpose>These measurements and geochemistry samples were collected to better understand the source of methane leaking from orphan wells and to elucidate the causes of variation in their emission rates.</purpose>
+      <supplinf>One or more files contain data available in comma separated value (.csv) file format. The user must have software capable of opening and viewing a .csv file.</supplinf>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <rngdates>
+          <begdate>20210301</begdate>
+          <enddate>20230923</enddate>
+        </rngdates>
+      </timeinfo>
+      <current>observed</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>None planned</update>
+    </status>
+    <spdom>
+      <bounding>
+        <westbc>-112.1900</westbc>
+        <eastbc>-111.2800</eastbc>
+        <northbc>49.0000</northbc>
+        <southbc>48.2100</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>ISO 19115 Topic Category</themekt>
+        <themekey>farming</themekey>
+        <themekey>elevation</themekey>
+        <themekey>utilitiesCommunication</themekey>
+        <themekey>structure</themekey>
+        <themekey>farming</themekey>
+        <themekey>environment</themekey>
+      </theme>
+      <theme>
+        <themekt>USGS Thesaurus</themekt>
+        <themekey>Energy Resources</themekey>
+      </theme>
+      <theme>
+        <themekt>USGS Metadata Identifier</themekt>
+        <themekey>USGS:677bfa33d34e711d10b7c891</themekey>
+      </theme>
+      <place>
+        <placekt>Common geographic areas</placekt>
+        <placekey>Earth</placekey>
+        <placekey>Land</placekey>
+        <placekey>United States</placekey>
+        <placekey>Montana</placekey>
+      </place>
+    </keywords>
+    <accconst>None.  Please see 'Distribution Info' for details.</accconst>
+    <useconst>None.  Users are advised to read the dataset's metadata thoroughly to understand appropriate use and data limitations.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Karl B. Haase</cntper>
+          <cntorg>U.S. Geological Survey</cntorg>
+        </cntperp>
+        <cntpos>Research Chemist</cntpos>
+        <cntaddr>
+          <addrtype>mailing and physical</addrtype>
+          <address>Mail Stop 954</address>
+          <city>Reston</city>
+          <state>VA</state>
+          <postal>20192</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>7036485818</cntvoice>
+        <cntemail>khaase@usgs.gov</cntemail>
+      </cntinfo>
+    </ptcontac>
+    <native>Data was processed using Microsoft Windows 11 and Microsoft Excel 365.
+
+The data are stored in the following files:
+Emissions Rate Measurements: KD_OW_Emissions_Data.csv (5 KB)
+Geochemistry Results: KD_OW_Geochemistry_Data.csv  (6 KB)
+Methane Carbon Isotope Results: KD_OW_Isotope_Data.csv (1 KB)</native>
+  </idinfo>
+  <dataqual>
+    <attracc>
+      <attraccr>Emissions measurement accuracy was validated several ways: (1) Certified and calibrated gas flow meters were used to perform the emissions measurements (2) Gas compositions used to convert the flow rates were obtained from analysis provided by certified and traceable laboratories (3) The emissions data were reviewed and periods where the gas flow meters were producing unusual or nonsensical results were excluded from calculations.
+
+Samples were analyzed via gas chromatography with flame ionization and thermal conductivity detectors (GC-FID/TCD) for C1 to C5 alkanes, CO2, and other (H2, He, air components) gases with an analytical precision in the range of 1.2 % to 4 % relative standard deviation and lower concentration reporting limits ranging from 4.9 % (methane) to 0.05 % (hexane). Thirteen samples contained sufficient material for analysis of δ13C of methane using GC-IRMS (Ellis and Dias, 2022). Replicate samples were taken at several sites for quality control purposes. Bulk compositions were corrected for air mixing in chambers and wellbores by using the oxygen concentration as the tracer for the air component and removing the relative abundances of other air sourced gases. The samples ranged from 10 % to 90 % air, with samples from wells with lower emissions rates and where it was not possible to setup a static chamber having lower abundances of reservoir gases.</attraccr>
+    </attracc>
+    <logic>Results were verified by comparing field replicates, internal laboratory replicates, and review of the tabulated results for errors.</logic>
+    <complete>Measurements of emission rates and gas composition were collected from leaking orphan wells in the Kevin-Sunburst Dome in Toole County, Montana, between 2021 and 2023. Samples were collected directly from well bores open to the atmosphere, or from chambers placed over the wells to accumulate the leaking gases. A substantial portion of the gas samples was air, and cylinders sometimes had to be charged with helium to get sufficient pressure for analysis. The uncorrected concentrations were sometimes very low and uncertainties relative to samples of produced gases maybe larger as a result of the air mixing and oxidation processes in the environment.</complete>
+    <posacc>
+      <horizpa>
+        <horizpar>Coordinates are reported as recorded by handheld GPS in their native resolution.</horizpar>
+      </horizpa>
+      <vertacc>
+        <vertaccr>Coordinates are reported as recorded by handheld GPS in their native resolution.</vertaccr>
+      </vertacc>
+    </posacc>
+    <lineage>
+      <procstep>
+        <procdesc>Emissions Rate Measurements were provided to the USGS in PDF Form, containing average rates in either cubic meters per day or cubic feet per hour, a plot of time series flow rates, and associated laboratory gas composition analysis.</procdesc>
+        <procdate>20230730</procdate>
+      </procstep>
+      <procstep>
+        <procdesc>The emissions rates were manually reviewed and the minimum and maximum flow rates were recorded.</procdesc>
+        <procdate>20230730</procdate>
+      </procstep>
+      <procstep>
+        <procdesc>The flow rates (minimum, average, maximum) were converted to methane emissions rate using the concentration of methane in the gas leaking from the well.</procdesc>
+        <procdate>20230730</procdate>
+      </procstep>
+      <procstep>
+        <procdesc>In July 2023, the USGS collected gas samples from all wells and submitted to the USGS Petroleum Geochemistry Research Laboratory in Denver, CO for analysis.</procdesc>
+        <procdate>20230730</procdate>
+      </procstep>
+      <procstep>
+        <procdesc>Results from laboratory analysis were reviewed and formatted into a machine readable data table by replacing blanks with data quality indicators.</procdesc>
+        <procdate>20240114</procdate>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <spref>
+    <horizsys>
+      <geograph>
+        <latres>0.00001</latres>
+        <longres>0.00001</longres>
+        <geogunit>Decimal degrees</geogunit>
+      </geograph>
+      <geodetic>
+        <horizdn>World Geodetic System 1984 (WGS 84)</horizdn>
+        <ellips>WGS_1984</ellips>
+        <semiaxis>6378137.0</semiaxis>
+        <denflat>298.257223563</denflat>
+      </geodetic>
+    </horizsys>
+  </spref>
+  <eainfo>
+    <detailed>
+      <enttyp>
+        <enttypl>KD_OW_Emissions_Data.csv</enttypl>
+        <enttypd>Comma Separated Value (CSV) file containing data.</enttypd>
+        <enttypds>Producer defined</enttypds>
+      </enttyp>
+      <attr>
+        <attrlabl>Study_Sequence</attrlabl>
+        <attrdef>Unique ID assigned to the well for the purposes of this study</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>1</rdommin>
+            <rdommax>19</rdommax>
+            <attrunit>No Unit</attrunit>
+            <attrmres>1</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Well_Name</attrlabl>
+        <attrdef>The registered name of the well studied</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>A text entry that is the registered name of the well studied.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>API</attrlabl>
+        <attrdef>The american petroleum institute (API) number of the well studied</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Text value of the american petroleum institute (API) number of the well studied</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Start_Date</attrlabl>
+        <attrdef>Emissions measurement session start date</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>The start date of a time series emissions measurement, in US Mountain Standard Time (MM/DD/YYYY).</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Start_Time</attrlabl>
+        <attrdef>Emissions measurement session start time</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>The start date of a time series emissions measurement, in US Mountain Standard Time in 24h format (0:00 midnight) (HH:MM).</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Duration_h</attrlabl>
+        <attrdef>The duration of the time series measurement, in hours.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>2.5</rdommin>
+            <rdommax>452.1</rdommax>
+            <attrunit>hours</attrunit>
+            <attrmres>0.01</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>CH4_%</attrlabl>
+        <attrdef>Methane gas concentration measured from the leaking orphan well. Used to estimate the emissions rate of methane.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>19.2</rdommin>
+            <rdommax>87.65</rdommax>
+            <attrunit>percent</attrunit>
+            <attrmres>0.01</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Average_g_h</attrlabl>
+        <attrdef>The average methane emission rate from the leaking well during the measurement interval in grams per hour</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>17.6</rdommin>
+            <rdommax>14613.5</rdommax>
+            <attrunit>grams per hour</attrunit>
+            <attrmres>0.1</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Min_g_h</attrlabl>
+        <attrdef>The smallest methane emission rate from the leaking well during the measurement interval in grams per hour</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>0.0</rdommin>
+            <rdommax>13321.2</rdommax>
+            <attrunit>grams per hour</attrunit>
+            <attrmres>0.1</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Max_g_h</attrlabl>
+        <attrdef>The largest methane emission rate from the leaking well during the measurement interval in grams per hour</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>34.8</rdommin>
+            <rdommax>17021.5</rdommax>
+            <attrunit>grams per hour</attrunit>
+            <attrmres>0.1</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Gas_Flow_Rate_Mean_cM_d</attrlabl>
+        <attrdef>Mean flow rate of gas leaking from the orphan well during the measurement duration.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>1.01</rdommin>
+            <rdommax>559.15</rdommax>
+            <attrunit>cubic meters per day</attrunit>
+            <attrmres>0.01</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Gas_Flow_Rate_Min_cM_d</attrlabl>
+        <attrdef>Minimum flow rate of gas leaking from the orphan well during the measurement duration.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>0</rdommin>
+            <rdommax>509.70</rdommax>
+            <attrunit>cubic meters per day</attrunit>
+            <attrmres>0.01</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Gas_Flow_Rate_Max_cM_d</attrlabl>
+        <attrdef>Maximum flow rate of gas leaking from the orphan well during the measurement duration.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>2</rdommin>
+            <rdommax>651.29</rdommax>
+            <attrunit>cubic meters per day</attrunit>
+            <attrmres>0.01</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+    </detailed>
+    <detailed>
+      <enttyp>
+        <enttypl>KD_OW_Geochemistry_Data.csv</enttypl>
+        <enttypd>Comma Separated Value (CSV) file containing data.
+
+The data in this table is the composition of the gas leaking from the orphan wells sampled from the wellbore or from a chamber placed over the wellbore to collect enough gas to constitute a sample.
+
+Reporting Limits:
+Helium- LRL: 0.499 URL: 99.798
+Hydrogen- LRL: 12.577 URL: 99.999
+Carbon Dioxide- LRL: 0.503 URL: 99.999
+Hydrogen Sulfide- LRL: 0 URL: 2000
+Argon_Oxygen Composite- LRL: 0.502 URL: 0.985
+Nitrogen- LRL: 1.009 URL: 37.155
+Carbon Monoxide- LRL: NT URL: 0.999
+Methane- LRL: 4.952 URL: 94.715
+Ethylene- LRL: NT URL: 1.988
+Ethane- LRL: 2.012 URL: 12.31
+Acetylene- LRL: NT URL: 1.01
+Propane- LRL: 0.755 URL: 6.9
+Cyclopropane- LRL: NT URL: 0.041
+Propylene- LRL: NT URL: 3.001
+Isobutane- LRL: 0.302 URL: 6.009
+Propadiene- LRL: NT URL: 0.854
+n-Butane- LRL: 0.3053 URL: 4.004
+t-2-Butene- LRL: NT URL: 3.002
+1-Butene- LRL: NT URL: 2
+Isobutylene- LRL: NT URL: 2.001
+c-2-Butene- LRL: NT URL: 2.002
+Neopentane- LRL: NT URL: 0.1
+Isopentane- LRL: 0.151 URL: 0.999
+n-Pentane- LRL: 0.15 URL: 1.01
+1,3-Butadiene- LRL: NT URL: 3.003
+3-Methyl-1-Butene- LRL: NT URL: NT
+t-2-Pentene- LRL: NT URL: 0.258
+Pentene- LRL: NT URL: 0.4
+2-Methyl-2-Butene- LRL: NT URL: NT
+c-2-Pentene- LRL: NT URL: 0.286
+Neohexane- LRL: NT URL: NT
+n-Hexane- LRL: 0.05 URL: 0.5
+n-Heptane- LRL: NT URL: 0.02
+
+Data quality flags for data with no numeric value:
+
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited
+‘NA’ - Field measurement, no replicate	
+‘NT’ -Not Tested, value not used in this study
+'C'- Helium only: Sample had residual helium from prior analysis.</enttypd>
+        <enttypds>Producer defined</enttypds>
+      </enttyp>
+      <attr>
+        <attrlabl>Study_Sequence</attrlabl>
+        <attrdef>Unique ID assigned to the well for the purposes of this study</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>1</rdommin>
+            <rdommax>18</rdommax>
+            <attrunit>No Unit</attrunit>
+            <attrmres>1</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Well_Name</attrlabl>
+        <attrdef>The registered name of the well studied</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>A text entry that is the registered name of the well studied.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>API</attrlabl>
+        <attrdef>The american petroleum institute (API) number of the well studied</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Text value of the american petroleum institute (API) number of the well studied</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Sample_Date</attrlabl>
+        <attrdef>The date of sample collection in US Mountain Standard Time (MM/DD/YYYY).</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>The date of sample collection in US Mountain Standard Time (MM/DD/YYYY).
+
+NA: Well not visited by the USGS</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Sample_Time</attrlabl>
+        <attrdef>The time of sample collection in US Mountain Standard Time in 24h format (0:00 midnight) (HH:MM).</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>The time of sample collection in US Mountain Standard Time in 24h format (0:00 midnight) (HH:MM).</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Decimal_Longitude</attrlabl>
+        <attrdef>The latitude of the location of the orphan well</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>48.700062</rdommin>
+            <rdommax>48.78058333</rdommax>
+            <attrunit>decimal degrees</attrunit>
+            <attrmres>0.00001</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Decimal_Latitude</attrlabl>
+        <attrdef>The longitude of the orphan well</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>-111.78562</rdommin>
+            <rdommax>-111.742828</rdommax>
+            <attrunit>decimal degrees</attrunit>
+            <attrmres>0.00001</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Reference_System</attrlabl>
+        <attrdef>World Geodetic System Reference Frame Version</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <edom>
+            <edomv>WSG 84</edomv>
+            <edomvd>Text string describing the geodetic reference frame</edomvd>
+            <edomvds>Producer defined</edomvds>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Sample_Container</attrlabl>
+        <attrdef>Type of container used to collect, store, and ship the gas sample</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <edom>
+            <edomv>Gas Cylinder</edomv>
+            <edomvd>Text description of the gas container used.</edomvd>
+            <edomvds>Producer defined</edomvds>
+          </edom>
+        </attrdomv>
+        <attrdomv>
+          <edom>
+            <edomv>No Sample</edomv>
+            <edomvd>Sample collection not possible.</edomvd>
+            <edomvds>Producer defined</edomvds>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Date_of_analysis</attrlabl>
+        <attrdef>The date of sample analysis in US Mountain Standard Time (MM/DD/YYYY).</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Text string representing the date of sample analysis in US Mountain Standard Time (MM/DD/YYYY).
+
+NA: No sample collected to analyze.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Replicate</attrlabl>
+        <attrdef>The number of the sample reanalysis reported</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>0</rdommin>
+            <rdommax>3</rdommax>
+            <attrunit>No unit</attrunit>
+            <attrmres>1</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Helium_%</attrlabl>
+        <attrdef>Concentration of Helium gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>The concentration of Helium gas in the sample in units of percent. 
+
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'C' - Not reported: residual helium present from prior analysis
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Hydrogen_%</attrlabl>
+        <attrdef>Concentration of Hydrogen gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Carbon_Dioxide_%</attrlabl>
+        <attrdef>Concentration of carbon dioxide gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Hydrogen_Sulfide_ppm</attrlabl>
+        <attrdef>Concentration of hydrogen sulfide gas in the sample in units of parts-per-million.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Argon_Oxygen_Composite_%</attrlabl>
+        <attrdef>Concentration of the sum of argon and oxygen gases in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Nitrogen_%</attrlabl>
+        <attrdef>Concentration of nitrogen gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Carbon_Monoxide_%</attrlabl>
+        <attrdef>Concentration of carbon monoxide gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Methane_%</attrlabl>
+        <attrdef>Concentration of methane gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Ethylene_%</attrlabl>
+        <attrdef>Concentration of ethylene (ethene) gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Ethane_%</attrlabl>
+        <attrdef>Concentration of ethane gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Acetylene_%</attrlabl>
+        <attrdef>Concentration of acetylene (ethyne) gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Propane_%</attrlabl>
+        <attrdef>Concentration of propane gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Cyclopropane_%</attrlabl>
+        <attrdef>Concentration of cyclopropane gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Propylene_%</attrlabl>
+        <attrdef>Concentration of propylene (propene) gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Isobutane_%</attrlabl>
+        <attrdef>Concentration of isobutane gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Propadiene_%</attrlabl>
+        <attrdef>Concentration of propadiene (1-propene) gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>n-Butane_%</attrlabl>
+        <attrdef>Concentration of butane gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>t-2-Butene_%</attrlabl>
+        <attrdef>Concentration of trans-2-butene gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>1-Butene_%</attrlabl>
+        <attrdef>Concentration of 1-butene gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Isobutylene_%</attrlabl>
+        <attrdef>Concentration of isobutene gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>c-2-Butene_%</attrlabl>
+        <attrdef>Concentration of cis-2-butene gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Neopentane_%</attrlabl>
+        <attrdef>Concentration of neopentane gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Isopentane_%</attrlabl>
+        <attrdef>Concentration of isopentane gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>n-Pentane_%</attrlabl>
+        <attrdef>Concentration of pentane gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>1,3-Butadiene_%</attrlabl>
+        <attrdef>Concentration of 1,3-butadiene gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>3-Methyl-1-Butene_%</attrlabl>
+        <attrdef>Concentration of 3-methyl-1-butene gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>t-2-Pentene_%</attrlabl>
+        <attrdef>Concentration of trans-2-pentene gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Pentene_%</attrlabl>
+        <attrdef>Concentration of pentene gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>2-Methyl-2-Butene_%</attrlabl>
+        <attrdef>Concentration of 2-methyl-2-butene gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>c-2-Pentene_%</attrlabl>
+        <attrdef>Concentration of cis-2-pentene gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Neohexane_%</attrlabl>
+        <attrdef>Concentration of neohexane gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>n-Hexane_%</attrlabl>
+        <attrdef>Concentration of hexane gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate		
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>n-Heptane_%</attrlabl>
+        <attrdef>Concentration of heptane gas in the sample in units of percent.</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Non-numeric field indicate non-reportable data:
+‘ND’ - Not Detected	
+‘&lt;RL’ - Detected, below lower reporting limit	
+‘&gt;RL’ - Detected, above upper reporting limited	
+‘NA’ - Field measurement, no replicate	
+'NS' - No Sample collected for this site</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Air_frac</attrlabl>
+        <attrdef>Fraction of the sample estimated to be air (determined from argon+oxygen fraction)</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <edom>
+            <edomv>NS</edomv>
+            <edomvd>No sample collected - not data available.</edomvd>
+            <edomvds>Producer defined</edomvds>
+          </edom>
+        </attrdomv>
+        <attrdomv>
+          <rdom>
+            <rdommin>0.09</rdommin>
+            <rdommax>0.95</rdommax>
+            <attrunit>percent</attrunit>
+            <attrmres>0.01</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Gas_frac</attrlabl>
+        <attrdef>Fraction of the sample estimated to be natural gas (determined from argon+oxygen fraction)</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <edom>
+            <edomv>NS</edomv>
+            <edomvd>No sample collected - not data available</edomvd>
+            <edomvds>Producer defined</edomvds>
+          </edom>
+        </attrdomv>
+        <attrdomv>
+          <rdom>
+            <rdommin>0.05</rdommin>
+            <rdommax>0.91</rdommax>
+            <attrunit>percent</attrunit>
+            <attrmres>0.01</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+    </detailed>
+    <detailed>
+      <enttyp>
+        <enttypl>KD_OW_Isotope_Data.csv</enttypl>
+        <enttypd>Comma Separated Value (CSV) file containing data.
+
+The data in this table is the results of methane stable carbon isotope ratio analysis.</enttypd>
+        <enttypds>Producer defined</enttypds>
+      </enttyp>
+      <attr>
+        <attrlabl>Study_Sequence</attrlabl>
+        <attrdef>Unique ID assigned to the well for the purposes of this study</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>1</rdommin>
+            <rdommax>18</rdommax>
+            <attrunit>No units</attrunit>
+            <attrmres>1</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Well_Name</attrlabl>
+        <attrdef>The registered name of the well studied</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>A text entry that is the registered name of the well studied.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Analysis_Date</attrlabl>
+        <attrdef>The date of sample analysis in US Mountain Standard Time (MM/DD/YYYY).</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <udom>Text string representing the date of sample analysis in US Mountain Standard Time (MM/DD/YYYY).</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Methane_d13C_permil</attrlabl>
+        <attrdef>The carbon isotope ratio of carbon-12 to carbon-13 in methane gas</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>-58.19</rdommin>
+            <rdommax>-50.42</rdommax>
+            <attrunit>per-mil</attrunit>
+            <attrmres>0.01</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Replicate_Num</attrlabl>
+        <attrdef>The number of the sample reanalysis reported</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>1</rdommin>
+            <rdommax>2</rdommax>
+            <attrunit>No unit</attrunit>
+            <attrmres>1</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>StdDev</attrlabl>
+        <attrdef>The standard deviation of the methane isotope ratio as determined by the variation of the signal in the analyzer during analysis</attrdef>
+        <attrdefs>Producer defined</attrdefs>
+        <attrdomv>
+          <edom>
+            <edomv>NA</edomv>
+            <edomvd>Not enough measurements to calculate standard deviation.</edomvd>
+            <edomvds>Producer defined</edomvds>
+          </edom>
+        </attrdomv>
+        <attrdomv>
+          <rdom>
+            <rdommin>0.01</rdommin>
+            <rdommax>0.17</rdommax>
+            <attrunit>per mil</attrunit>
+            <attrmres>0.01</attrmres>
+          </rdom>
+        </attrdomv>
+      </attr>
+    </detailed>
+    <overview>
+      <eaover>These data tables contained time series emission rate measurements from orphan wells and gas composition data. Gas composition and isotope analysis were made using methods described in Ellis and Dias, 2022).</eaover>
+      <eadetcit>Ellis, G.S., and Dias, R.F., 2022, Development of hydrocarbon gas reference materials for stable isotopic composition (δ13C and δ2H): U.S. Geological Survey Scientific Investigations Report 2021–5136, 22 p., https://doi.org/10.3133/sir20215136.
+
+Well information was obtained from the Montana Board of Oil &amp; Gas Conservation Commission (2024). https://bogapps.dnrc.mt.gov/dataminer/Wells/Wells.aspx.</eadetcit>
+    </overview>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>U.S. Geological Survey</cntorg>
+          <cntper>ScienceBase</cntper>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>Denver Federal Center, Building 810, Mail Stop 302</address>
+          <city>Denver</city>
+          <state>CO</state>
+          <postal>80225</postal>
+          <country>United States</country>
+        </cntaddr>
+        <cntvoice>1-888-275-8747</cntvoice>
+        <cntemail>sciencebase@usgs.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <distliab>Unless otherwise stated, all data, metadata and related materials are considered to satisfy the quality standards relative to the purpose for which the data were collected. Although these data and associated metadata have been reviewed for accuracy and completeness and approved for release by the U.S. Geological Survey (USGS), no warranty expressed or implied is made regarding the display or utility of the data for other purposes, nor on all computer systems, nor shall the act of distribution constitute any such warranty.</distliab>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <formname>Digital Data</formname>
+        </digtinfo>
+        <digtopt>
+          <onlinopt>
+            <computer>
+              <networka>
+                <networkr>https://doi.org/10.5066/P13A7RXN</networkr>
+              </networka>
+            </computer>
+          </onlinopt>
+        </digtopt>
+      </digform>
+      <fees>None</fees>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metd>20250312</metd>
+    <metc>
+      <cntinfo>
+        <cntperp>
+          <cntper>Karl B. Haase</cntper>
+          <cntorg>U.S. Geological Survey</cntorg>
+        </cntperp>
+        <cntpos>Research Chemist</cntpos>
+        <cntaddr>
+          <addrtype>mailing and physical</addrtype>
+          <address>Mail Stop 954</address>
+          <city>Reston</city>
+          <state>Virginia</state>
+          <postal>20192</postal>
+          <country>United States</country>
+        </cntaddr>
+        <cntvoice>7036485818</cntvoice>
+        <cntemail>khaase@usgs.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+  </metainfo>
+</metadata>

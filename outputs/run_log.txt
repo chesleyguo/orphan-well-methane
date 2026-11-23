@@ -156,3 +156,23 @@ state  records  with_value  share_with_value_before_2025_07  share_with_value_af
 
 states where every reported value is 0 (>=10 values): KS, IL, IN, NE, AR, PA, AZ, MS, N/A | records: 4126
 records with a value: before change 0.69, after 0.49
+== 10
+USGS MT: sessions 56, wells with emission data 15, wells with coordinates 19
+         API       Well_Name  sessions  mean_of_sessions_g_h  min_session_g_h  max_session_g_h  in_usgs_2022_inventory  in_doi_plugged  nearest_doi_m
+25-101-10373 State Well 16-2        12                7181.7            567.7          14613.5                    True           False         1936.0
+25-101-10239     Lorenzen 15        12                 934.7            478.7           1441.1                    True           False         3296.0
+25-101-10087         Bluhm 3         1                 428.0            428.0            428.0                    True           False         1235.0
+25-101-09911        Caine 13         1                 307.3            307.3            307.3                    True           False         1307.0
+25-101-10133   Ruby Allen 21         4                 204.5             85.9            533.1                    True           False         1734.0
+25-101-10130   Ruby Allen 18         5                 195.4             95.5            409.9                    True           False         2298.0
+25-101-10073         Bluhm 4         1                  91.8             91.8             91.8                    True           False         1285.0
+25-101-10074         Bluhm 7         8                  68.8             43.2            130.4                    True           False         1095.0
+25-101-10072         Bluhm 2         2                  55.8             51.3             60.4                    True           False         1099.0
+25-101-10137        Allen 29         3                  52.4             28.2             88.4                    True           False         1838.0
+25-101-09901        Bluhm 10         3                  47.1             18.1             82.4                    True           False         1176.0
+25-101-10089         Bluhm 9         1                  32.4             32.4             32.4                    True           False         1047.0
+25-101-10075        Bluhm 11         1                  27.1             27.1             27.1                    True           False         1104.0
+25-101-09900         Bluhm 5         1                  19.0             19.0             19.0                    True           False          904.0
+25-101-10077      Lorenzen 6         1                  17.6             17.6             17.6                    True           False         3184.0
+in 2022 inventory: 15/15 | in DOI plugged records: 0 | nearest DOI record: min 904 m
+median between-session CV (wells with >=3 sessions): 0.65

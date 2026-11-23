@@ -117,6 +117,13 @@ Florida values of exactly 1 g/h are treated as "<1 g/h".
 score observed gas leaks; PA selection is by pluggers (shallow, capped-cost wells). The selection
 model allows dependence on emissions through leak indicators and models PA separately.
 
+**D24. USGS Kevin-Sunburst (MT) wells used as an unplugged, measured comparison group and as a
+snapshot-noise prior, not as paired data.** All 15 wells with emission data are in the 2022 orphan
+inventory; none appears in the DOI plugged records (nearest DOI record 904 m). The wells were
+chosen because they leak, so they are not a random sample of unplugged wells. Between-session
+variation (median CV 0.65 for wells measured three or more times) informs the single-visit
+measurement-noise prior. The data release swaps the latitude and longitude column names.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
 - Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and
