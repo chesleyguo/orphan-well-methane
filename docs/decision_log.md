@@ -129,7 +129,12 @@ leak rates, capped at 50 kg/h) with one censoring limit per method, and a screen
 (one noisy visit, CV 0.65; plug the top-ranked 10% or 30% vs a random choice; social cost of methane
 $1,900/t, 25 years, 6.4%/yr decline, 2% discount). It ignores selection, state differences and the
 Hi-Flow leak-finding stage. Its numbers are for discussion, not results; the planned analysis
-replaces it.
+replaces it. Two pilot findings shape the plan: (i) the value of screening scales roughly with the
+probability that a leak is found (break-even $30k at 100%, $16k at 50%, $7.7k at 25%), so the
+leak-finding stage must be modeled explicitly; (ii) fitted separately, states differ widely
+(P > 10 g/h: LA, CA ~6%; CO 52%; OK 38%), and in single-method states the non-leaking share is not
+identified (CA hits the boundary), so the full model must be hierarchical across states and use
+external calibration (Driscoll chamber pairs, KGS, USGS MT).
 
 ## Open decisions (to settle before freezing the analysis plan)
 

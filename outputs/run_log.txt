@@ -183,6 +183,18 @@ hurdle fit: share not leaking 0.41 | leakers: median 0.15 g/h, sigma 4.49
   quantified wells only (as in RFF 2026)  507              1              8.053     421.7  0.7298   0.4773     0.211
 non-detects as zero (as in DOI averages) 2308         0.2197              8.053     92.63  0.1603   0.1049   0.04636
 censoring-corrected hurdle model (pilot) 2308         0.5931             0.1483     170.1  0.1989   0.1032   0.04349
+break-even (L=1 g/h, plug 10%) by probability the leak is found:
+ p_find  breakeven_cost_usd      lo      hi
+   1.00             30414.0 20098.0 35512.0
+   0.75             22576.0 14323.0 25976.0
+   0.50             15925.0  8590.0 18260.0
+   0.25              7742.0  3846.0  9324.0
+state   n  detects                                 main_method  share_leaking  median_leaker_g_h  P_gt_10  sigma
+   LA 657      145                             hi-flow sampler          0.546             0.0189   0.0584   5.05
+   CA 303       44                             hi-flow sampler              1             0.0178   0.0554   3.97
+   NM 168       86                             flow meter + GC          0.751              0.145    0.171   5.67
+   CO 121       80 federal guidelines (instrument unspecified)          0.709                 49    0.521   2.53
+   OK  80       34               laser analyzer (quantitative)          0.428               91.5    0.378   1.87
 value per g/h abated: $179 (PV, 25 yr, 6.4%/yr decline, 2% discount)
 plug 10%: break-even $/screened well at L=0.01: 30414 | L=1: 30414 | L=50: 30191
 plug 30%: break-even $/screened well at L=0.01: 23723 | L=1: 23714 | L=50: 23482

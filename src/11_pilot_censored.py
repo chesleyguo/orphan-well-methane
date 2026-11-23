@@ -110,12 +110,13 @@ M = 20000
 limits = np.logspace(-3, 4, 50)
 
 
-def gain_per_screened(m, sd, p, L, frac, seed):
+def gain_per_screened(m, sd, p, L, frac, seed, p_find=1.0):
     r = np.random.default_rng(seed)
     z, u, n, tie = r.normal(size=M), r.random(M), r.normal(size=M), r.random(M)   # common random numbers
     e = np.minimum(np.exp(m + sd * z), CAP) * (u > p)
     obs = e * np.exp(-SIG_M ** 2 / 2 + SIG_M * n)
-    detected = obs > L
+    found = np.random.default_rng(seed + 7).random(M) < p_find
+    detected = (obs > L) & found
     order = np.lexsort((tie, -np.where(detected, obs, 0)))
     k = int(frac * M)
     return (e[order[:k]].sum() - frac * e.sum()) * VALUE / M
@@ -129,6 +130,30 @@ for frac in (0.1, 0.3):
         res.append({'plug_fraction': frac, 'detection_limit_g_h': L, 'breakeven_cost_usd': central,
                     'lo': np.quantile(band, .05), 'hi': np.quantile(band, .95)})
 be = pd.DataFrame(res)
+
+# sensitivity: leak point found with probability p_find regardless of size (Hi-Flow finding stage;
+# LSU: Hi-Flow detected 23% of wells vs 96% by chamber -> p_find ~0.25 is a pessimistic bound)
+sens = []
+for pf in (1.0, 0.75, 0.5, 0.25):
+    central = gain_per_screened(mu, s, pi, 1.0, 0.1, 1000, pf)
+    band = [gain_per_screened(bm, bsd, bp, 1.0, 0.1, 2000 + j, pf) for j, (bm, bsd, bp) in enumerate(boot[:50])]
+    sens.append({'p_find': pf, 'detection_limit_g_h': 1.0, 'plug_fraction': 0.1, 'breakeven_cost_usd': central,
+                 'lo': np.quantile(band, .05), 'hi': np.quantile(band, .95)})
+sens = pd.DataFrame(sens)
+sens.to_csv(P / 'pilot_breakeven_findprob.csv', index=False, float_format='%.6g')
+print('break-even (L=1 g/h, plug 10%) by probability the leak is found:')
+print(sens[['p_find', 'breakeven_cost_usd', 'lo', 'hi']].round({'breakeven_cost_usd': 0, 'lo': 0, 'hi': 0}).to_string(index=False))
+
+# state heterogeneity: same hurdle model fitted separately where data allow
+st_rows = []
+for st, xs_ in x.groupby('st'):
+    if xs_.det.sum() >= 20 and (~xs_.det).sum() >= 20:
+        m_, s_, p_ = fit(xs_)
+        st_rows.append(dict(state=st, n=len(xs_), detects=int(xs_.det.sum()),
+                            main_method=xs_.method_group.value_counts().index[0], **summ(m_, s_, p_), sigma=s_))
+stdf = pd.DataFrame(st_rows).sort_values('n', ascending=False)
+stdf.to_csv(P / 'pilot_by_state.csv', index=False, float_format='%.6g')
+print(stdf[['state', 'n', 'detects', 'main_method', 'share_leaking', 'median_leaker_g_h', 'P_gt_10', 'sigma']].to_string(index=False, float_format='%.3g'))
 be.to_csv(P / 'pilot_breakeven.csv', index=False, float_format='%.6g')
 print('value per g/h abated: $%.0f (PV, %d yr, %.1f%%/yr decline, %.0f%% discount)' % (VALUE, YEARS, DECLINE * 100, DISC * 100))
 for frac in (0.1, 0.3):

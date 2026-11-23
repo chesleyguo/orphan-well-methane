@@ -1,0 +1,6 @@
+state,n,detects,main_method,share_leaking,median_leaker_g_h,mean_g_h,P_gt_1,P_gt_10,P_gt_100,sigma
+LA,657,145,hi-flow sampler,0.545934,0.018935,106.215,0.117857,0.0584255,0.0243867,5.04559
+CA,303,44,hi-flow sampler,1,0.0178462,23.8383,0.155194,0.0554028,0.0148242,3.96878
+NM,168,86,flow meter + GC,0.751496,0.144673,786.996,0.275519,0.171057,0.0935887,5.67276
+CO,121,80,federal guidelines (instrument unspecified),0.709303,49.0005,609.65,0.665148,0.521172,0.276018,2.5335
+OK,80,34,laser analyzer (quantitative),0.428369,91.5431,218.373,0.425,0.37773,0.206113,1.87017
