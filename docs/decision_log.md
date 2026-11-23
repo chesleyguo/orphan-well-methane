@@ -143,8 +143,13 @@ used). 209 summaries computed by the same function for real and simulated data; 
 simulation. Prior predictive check: 5 of 209 real summaries fall outside the 99% range, all in
 states with very few measured wells (NY, OH, TN, MT). Marginal information check: the between-visit
 noise s_v and the leak-finding probability p_find are barely informed by the program summaries
-(|rank correlation| 0.07 and 0.25), as expected; the next version adds the Driscoll pairs and the
-Montana repeat visits to the simulator to identify them.
+(|rank correlation| 0.07 and 0.25), as expected. Same day: the simulator now also generates the
+Driscoll chamber sample of unplugged LA wells (from LA's emission model, chamber limit, no
+leak-finding stage) and the Montana repeat visits (within-well SD of log readings), plus a contrast
+summary (LA Hi-Flow detection share / chamber share above 1 g/h). Information rises to 0.90 for s_v
+and 0.37 for p_find; 6 of 215 real summaries fall outside the 99% prior predictive range, all from
+states with very few measured wells (NY, OH, NM screening, AL, MT). The 5 Driscoll-DOI pairs are not
+yet simulated.
 
 ## Open decisions (to settle before freezing the analysis plan)
 

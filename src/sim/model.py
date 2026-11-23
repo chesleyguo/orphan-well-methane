@@ -14,7 +14,7 @@ Usage:
 """
 import pathlib, pickle, re, sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
-from config import PROC  # noqa: E402
+from config import PROC, RAW, DRISCOLL  # noqa: E402
 
 import numpy as np
 import pandas as pd
@@ -121,6 +121,15 @@ def build_design(cache=True):
         doi_code=a.code.values.astype(int),
         doi_value=a.methane_pre_plugging_emissions.fillna(0).values,
     )
+    # external data (analysis plan Sec. 3): Driscoll chamber sample of unplugged LA wells, and the
+    # USGS Montana repeat visits (used only for the single-visit noise s_v)
+    dr = pd.read_excel(DRISCOLL).iloc[1:]
+    design['dr_state'] = sidx['LA']
+    design['dr_gas'] = dr['Product Type'].astype(str).str.upper().str.contains('GAS').values.astype(float)
+    design['dr_value'] = pd.to_numeric(dr['CH4 Flow Rate'], errors='coerce').fillna(0).values
+    mt = pd.read_csv(RAW / 'usgs_mt_kevin_sunburst' / 'KD_OW_Emissions_Data.csv', encoding='utf-8-sig')
+    design['mt_sessions'] = mt.groupby('API').size().values
+    design['mt_logsd'] = float(np.median([np.log(g).std(ddof=1) for _, g in mt.groupby('API').Average_g_h if len(g) >= 3]))
     if cache:
         pickle.dump(design, open(f, 'wb'))
     return design
@@ -185,6 +194,24 @@ def _summaries(n_states, inv_state, inv_cell, inv_cell_state, n_cells, plugged,
     return np.concatenate(out)
 
 
+DR_CONTROL = 0.0001   # g/h; Driscoll et al. control-blank level
+
+
+def _external_summaries(dr_value, mt_logsd, la_hiflow_detect):
+    det = dr_value > DR_CONTROL
+    lv = np.log(dr_value[det]) if det.sum() >= 3 else None
+    q = list(np.quantile(lv, (0.1, 0.5, 0.9))) if lv is not None else [EMPTY] * 3
+    # leak-finding contrast: LA Hi-Flow detection share relative to the chamber share above 1 g/h
+    above1 = (dr_value > 1.0).mean()
+    ratio = la_hiflow_detect / max(above1, 1 / len(dr_value))
+    return np.array([det.mean()] + q + [mt_logsd, ratio])
+
+
+def _la_hiflow_detect(state, code, value, la):
+    m = (state == la) & (code == 3)
+    return (value[m] > 0).mean() if m.sum() else 0.0
+
+
 def summary_names(design):
     st = design['states']
     names = [f'plug_share_{s}' for s in st] + [f'cell_sd_{s}' for s in st] + [f'measured_{s}' for s in st]
@@ -192,13 +219,17 @@ def summary_names(design):
     names += [f'logq{int(q * 100)}_{s}' for s in st for q in Q]
     names += ['detect_gas', 'detect_other', 'pooled_logq10', 'pooled_logq50', 'pooled_logq90', 'pooled_logq99']
     names += ['between_state_sd_plug', 'between_state_sd_detect', 'between_state_sd_logq50']
+    names += ['driscoll_detect', 'driscoll_logq10', 'driscoll_logq50', 'driscoll_logq90', 'mt_within_well_logsd',
+              'la_hiflow_vs_chamber_ratio']
     return names
 
 
 def real_summaries(design):
     d = design
-    return _summaries(len(d['states']), d['inv_state'], d['inv_cell'], d['inv_cell_state'], d['n_cells'],
-                      d['inv_plugged'].astype(float), d['doi_state'], d['doi_gas'], d['doi_code'], d['doi_value'])
+    s = _summaries(len(d['states']), d['inv_state'], d['inv_cell'], d['inv_cell_state'], d['n_cells'],
+                   d['inv_plugged'].astype(float), d['doi_state'], d['doi_gas'], d['doi_code'], d['doi_value'])
+    la = _la_hiflow_detect(d['doi_state'], d['doi_code'], d['doi_value'], d['dr_state'])
+    return np.concatenate([s, _external_summaries(d['dr_value'], d['mt_logsd'], la)])
 
 
 # ---- simulator ---------------------------------------------------------------------------
@@ -234,6 +265,16 @@ def simulate(theta, design, rng, return_latent=False):
 
     s = _summaries(S, st, d['inv_cell'], d['inv_cell_state'], d['n_cells'], plugged.astype(float),
                    ws, gas[w], code, value)
+    # Driscoll: chamber (no leak-finding stage, limit ~0.001 g/h) on a sample of unplugged LA wells
+    k = d['dr_state']; dg = d['dr_gas']; nd = len(dg)
+    dz = rng.random(nd) < expit(a_s[k] + p['b_gas'] * dg)
+    de = np.where(dz, np.exp(rng.normal(m_s[k] + p['g_gas'] * dg, sigma)), 0.0)
+    dread = de * np.exp(rng.normal(-p['s_v'] ** 2 / 2, p['s_v'], nd))
+    dval = np.where(dread > 0.001 * np.exp(rng.normal(0, 0.5)), dread, 0.0)
+    # Montana repeat visits: within-well SD of log readings depends only on s_v
+    sds = [rng.normal(0, p['s_v'], n_k).std(ddof=1) for n_k in d['mt_sessions'] if n_k >= 3]
+    la = _la_hiflow_detect(ws, code, value, k)
+    s = np.concatenate([s, _external_summaries(dval, float(np.median(sds)), la)])
     if return_latent:
         return s, dict(z=z, e=e, plugged=plugged)
     return s
