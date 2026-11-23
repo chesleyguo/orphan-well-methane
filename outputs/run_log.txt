@@ -1,9 +1,9 @@
-===== 01_build_linkage
+== 01
 DOI matched: {nan: 6738, 'api': 4855, 'spatial': 1515}
 {'AZ': 0.0, 'FL': 0.0, 'N/A': 0.0, 'UT': 0.11, 'CO': 0.15, 'KS': 0.16, 'IN': 0.28, 'OK': 0.29, 'WV': 0.36, 'AL': 0.37, 'AR': 0.4, 'MS': 0.41, 'TX': 0.45, 'MT': 0.45, 'NE': 0.46, 'ND': 0.48, 'OH': 0.49, 'AK': 0.55, 'WY': 0.68, 'PA': 0.7, 'CA': 0.73, 'NM': 0.74, 'KY': 0.75, 'TN': 0.8, 'IL': 0.89, 'LA': 0.9, 'MI': 0.9, 'NY': 0.94}
 inventory plugged: 6346 of 117672
 method classes among measured: {'none': 6080, 'hi-flow': 817, 'handheld detector': 585, 'federal-guidelines': 259, 'flow+GC': 210, 'chamber/flow-through': 186, 'laser': 172, 'other': 123, 'OGI camera': 54, 'calculated': 13}
-===== 02_state_attributes
+== 02
 state  doi_wells  matched  spud  depth  last_prod  measured_real  measured_with_age  measured_with_depth  detects
    LA        797      712   663    699        150            665                545                  575      145
    NM        217      217   212    217        215            206                201                  206      124
@@ -12,7 +12,7 @@ state  doi_wells  matched  spud  depth  last_prod  measured_real  measured_with_
    WV        342      339     0      0          0             61                  0                    0       59
    NY         35       35    22     25          0             35                 22                   25       23
    KS       2569        0     0      0          0              0                  0                    0        0
-===== 03_selection_measurement
+== 03
 selection universe (states with any plugging): 112716 plugged 6346
 plug rate by state:
  st           OH         PA         OK         KY        IL        NY        TX        KS        LA        WV        CA        WY       ND       NM     IN
@@ -49,7 +49,7 @@ states using >1 method class: {'AZ': 5, 'CA': 3, 'CO': 5, 'LA': 3, 'N/A': 2, 'NE
   LA {'chamber/flow-through': {'size': 186, 'mean': 0.2}, 'hi-flow': {'size': 471, 'mean': 0.23}}
   PA {'handheld detector': {'size': 200, 'mean': 0.0}, 'laser': {'size': 15, 'mean': 0.0}}
   TX {'OGI camera': {'size': 46, 'mean': 0.09}, 'other': {'size': 16, 'mean': 0.12}}
-===== 04_prediction_prioritization
+== 04
 modeling sample: 1834 detects 561 states 22
 detection AUC (spatial-block CV): 0.696  AP: 0.556  base rate: 0.306
 AUC without lat/lon: 0.659
@@ -73,7 +73,7 @@ top 10%: pooled ranking captures 0.35 of high emitters; within-state ranking cap
 top 20%: pooled ranking captures 0.46 of high emitters; within-state ranking captures 0.29 (random = 0.20)
 top 30%: pooled ranking captures 0.59 of high emitters; within-state ranking captures 0.39 (random = 0.30)
 within-state AUC (high emitter): [0.46, 0.59, 0.62, 0.31, 0.63, 0.6, 0.71]  mean 0.56
-===== 05_attribute_value
+== 05
 n 1398 det 476 hi 207  age avail 0.85  depth avail 0.66
 det: base AUC 0.666±0.004  +age/depth 0.661±0.007
 hi: base AUC 0.727±0.016  +age/depth 0.678±0.016
@@ -91,19 +91,21 @@ dep_bin
 (3215.0, 99999.0]   230  0.49  0.27
 LA n 544 det 114  loc 0.5  loc+gas 0.436  +depth+age 0.46  depth+age+gas 0.47
 NM n 201 det 120  loc 0.463  loc+gas 0.513  +depth+age 0.588  depth+age+gas 0.597
-===== 06_driscoll_pairing
+== 06
 Driscoll wells: 132 | above control (0.0001 g/h): 125
 Driscoll wells with a valid API: 110
-paired wells: 4
-    ID      api10 Product Type chamber_date  chamber_g_h  plug_date  days_between  doi_hiflow_g_h       methane_detection_method
-152434 1711120969          Gas   2023-09-22  1367.687559 2023-10-23            31             NaN                  Semtec HiFlow
- 53181 1701709864          Oil   2023-09-12    48.244122 2023-10-02            20        0.000000               Hiflow/Method 21
- 52991 1701708639          Oil   2023-08-15    40.373936 2026-01-06           875        0.000000 Semtech High Flow 2.0 Sampler 
-110176 1701704553          Oil   2023-07-18     3.300897 2023-08-01            14      253.091237               Hiflow/Method 21
-unmatched for lack of API (candidates for coordinate matching): 22
-===== 07_export_tables
+pairs by route: {'api': 4, 'serial': 1}
+placeholder-API wells unmatched: 22 | nearest DOI record (m): min 66, median 534
+paired wells: 5
+    ID      api10   link             name Product Type chamber_date  chamber_g_h  plug_date  days_between  doi_hiflow_g_h       methane_detection_method
+152434 1711120969    api GRAYLING N - 020          Gas   2023-09-22  1367.687559 2023-10-23            31             NaN                  Semtec HiFlow
+ 53181 1701709864    api  Loyd Napier - 4          Oil   2023-09-12    48.244122 2023-10-02            20        0.000000               Hiflow/Method 21
+ 52991 1701708639    api    UNDERWOOD A 2          Oil   2023-08-15    40.373936 2026-01-06           875        0.000000 Semtech High Flow 2.0 Sampler 
+110176 1701704553    api         Head - 7          Oil   2023-07-18     3.300897 2023-08-01            14      253.091237               Hiflow/Method 21
+ 75875 1701716913 serial Rudersdorf - J-1          NPS   2023-08-15     0.000285 2023-10-02            48        0.000000               Hiflow/Method 21
+== 07
 wrote /home/claude/orphan-well-methane/data/processed/doi_wells_analysis.csv (13108, 58) | /home/claude/orphan-well-methane/data/processed/usgs2022_inventory_linked.csv (117672, 34)
-===== 08_detection_empirical
+== 08
                                method_group    n                                                       states  n_detect  detect_rate  min_pos  p05_pos  p25_pos  median_pos  share_pos_below_1                 top_values
                                        none 6010 AR, AZ, CA, CO, IL, IN, KS, MI, MS, MT, NE, OK, PA, TX, UT,         11        0.002 0.100000   5.0500   25.000       70.00               0.09                       25×2
                             hi-flow sampler  818          AL, AZ, CA, CO, LA, MS, MT, N/A, NE, NY, OH, TX, WV       223        0.273 0.000300   0.0040    1.000        6.90               0.24 0.004×12; 1.1504×8; 0.01×8
@@ -120,3 +122,4 @@ federal guidelines (instrument unspecified)  259                                
                         FID (concentration)    4                                                           OH         4        1.000 0.000031   0.0735    0.368        2.68               0.50                           
 
 method strings: 76 -> outputs/method_string_audit.csv
+Hi-Flow records by named model: {'Hi-Flow 2/II, maker not named': 238, 'Semtech Hi-Flow 2 (named)': 350, 'model not named': 387, 'All': 975}

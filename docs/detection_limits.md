@@ -31,15 +31,25 @@ Excluded or undecided: calculated (13), FID (4), other/unspecified (60), "ND" (7
    In Louisiana the Hi-Flow only measures leak points an OGI camera has found, so detection inherits
    OGI's limit (50% detection ≈ 20 g/h at 6 m). Model it in two stages: was the leak point found, and
    if so, was it quantified. This fits the two paired wells (Hi-Flow 0, chamber 40–48 g/h) and the
-   23% vs 96% detection gap reported by LSU. At the top end, Bacharach Hi-Flow units can under-report
-   by up to about 100× above ~0.4 scfm (≈ 460 g/h) through sensor-transition failure, so the largest
-   Hi-Flow values may be biased low if that model was used.
-3. **Screening devices do not measure rates.** Handheld detectors and RMLD-type lasers give
+   23% vs 96% detection gap reported by LSU. A fifth pair, found through the SONRIS serial number,
+   adds a well that both methods put near zero.
+
+3. **The Hi-Flow instrument is the Semtech Hi-Flow 2, not the Bacharach.** Of 975 DOI records
+   that mention a high-flow sampler, 350 name Semtech (LA 251, WV 59, OK 21, AL 6, others) and none
+   name Bacharach, which stopped being made before the program began. California's 238 records say
+   "Hi-Flow 2" or "Hi-Flow II" without a maker; that is the Semtech product name. Louisiana's
+   "Hiflow/Method 21" (291) and the "High Flow Sampling" entries in MS, MT, NE and AZ do not name a
+   model. The Semtech uses a tunable diode laser, so the Bacharach sensor-transition failure
+   (Howard 2015; Connolly 2019) does not apply. Its spec range of 0.0005-25 CFM works out to about
+   0.6 g/h at the bottom, consistent with the 0.6-2 g/h prior. The Hi-Flow zeros at 40-48 g/h are
+   therefore far above the instrument's floor, which points to leak-finding or capture rather than
+   sensitivity. Table: `outputs/hiflow_model_by_state.csv`.
+4. **Screening devices do not measure rates.** Handheld detectors and RMLD-type lasers give
    concentrations. Their zeros should enter the model as "below an unknown threshold", or be left out
    of the rate likelihood; they should never be read as 0 g/h. DOI's own rule assumes non-detects are
    ≤ 1 g/h, but 0 detections in 577 Sensit and Bascom Turner screenings is far below what other methods
    find, so that assumption looks too optimistic here.
-4. **Rounding.** Recurring values (0.004, 0.01, 1.0, 1.69 g/h) should be treated as interval-censored.
+5. **Rounding.** Recurring values (0.004, 0.01, 1.0, 1.69 g/h) should be treated as interval-censored.
 
 ## Sources
 
@@ -77,6 +87,11 @@ Natural gas is mostly but not entirely methane, so these conversions are upper b
 
 Still to read:
 
+- Connolly, J. I., Robinson, R. A., & Gardiner, T. D. (2019). Assessment of the Bacharach Hi Flow
+  Sampler characteristics and potential failure modes. Measurement, 145, 226-233. Noisy, non-linear
+  readings in the switchover region between the two sensor modes.
+- Sensors, Inc. SEMTECH HI-FLOW 2 product sheet and OOOOb readiness note (2024): tunable diode laser,
+  measurable leak rate 0.0005-25 CFM, marketed as the replacement for the discontinued Bacharach unit.
 - Pekney et al. (2018), Hillman State Park — the Hi-Flow adaptation used in Louisiana.
 - A source for handheld concentration detectors and RMLD-type lasers expressed as a flow rate
   (the rows still marked low confidence).

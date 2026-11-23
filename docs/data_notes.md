@@ -32,7 +32,10 @@ Snapshot date: 2026-11-22. Data-handling choices are logged in `docs/decision_lo
 - `data/processed/doi_wells_analysis.csv` — one row per DOI plugged well with method class, linkage
   and state attributes.
 - `data/processed/usgs2022_inventory_linked.csv` — 2022 inventory with a `plugged` flag.
-- `outputs/driscoll_doi_pairs.csv` — wells measured by both methods.
+- `outputs/driscoll_doi_pairs.csv` — wells measured by both methods (5; column `link` = api / serial / coord).
+- `outputs/driscoll_nearest_doi.csv` — nearest DOI LA record and distance for all 132 Driscoll wells.
+- `outputs/hiflow_model_by_state.csv` — Hi-Flow maker/model named in DOI method strings, by state.
+- `data/raw/states/LA_serial_coords.csv` — SONRIS coordinates for the 132 Driscoll serials (cached query).
 - `outputs/detection_by_method_empirical.csv`, `outputs/method_string_audit.csv` — detection by method
   group and the raw method strings behind each group (see `docs/detection_limits.md`).
 - `outputs/run_log.txt` — console output of the scripts in `src/`.

@@ -77,12 +77,26 @@ limits yet miss large leaks (Hi-Flow 0 vs chamber 40–48 g/h). Working priors f
 threshold by group are in `docs/detection_limits.md` (judgment, to revisit). Screening-device zeros
 are not 0 g/h.
 
+## 2026-11-23 — chamber pairing and Hi-Flow model
+
+**D17. Driscoll-DOI pairing uses API, then serial number, then coordinates within 50 m.** The four
+API-linked wells sit 0-36 m from their DOI record. Wells with the same lease name sit about 60-110 m
+apart (for example SEYBERT: 66 m from a DOI record with the same lease name but a different API), so
+a wider radius would pair sister wells. Under this rule the 22 Driscoll wells with a placeholder API
+remain unmatched (nearest DOI record 66 m, median 534 m); a fifth pair came from DOI using the SONRIS
+serial number as us_well_id. Result: 5 pairs (`outputs/driscoll_doi_pairs.csv`); nearest-record
+distances for all 132 wells in `outputs/driscoll_nearest_doi.csv`.
+
+**D18. Hi-Flow treated as Semtech Hi-Flow 2 throughout; no Bacharach transition-failure term.** No
+DOI record names Bacharach; 350 name Semtech, and California's "Hi-Flow 2/II" is the Semtech product
+name. Records that do not name a model (LA "Hiflow/Method 21", "High Flow Sampling") are assumed to be
+the same instrument; a sensitivity run can widen the upper-tail error for them.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
 - Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and
   Zimmerle et al. 2020 (now medium confidence); handheld and RMLD-type screening still low confidence.
-- Which Hi-Flow model each state used (Bacharach vs Semtech) — matters for under-reporting at high rates.
 - High-emitter threshold (currently 10 g/h).
 - Treatment of the two ~46 kg/h Adams County, CO wells (keep; report leave-top-k-out).
 - Spatial-block size for cross-validation (currently 0.5°).
-- Whether to coordinate-match the 22 Driscoll chamber wells that lack a valid API.
+- What LA's "Hiflow/Method 21" means in practice: Method 21 screening first and Hi-Flow only on hits, or both on every well (ask LDENR).

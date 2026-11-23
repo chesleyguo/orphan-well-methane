@@ -6,6 +6,7 @@ Run from the repo root after 01: python src/08_detection_empirical.py
 """
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from config import *
+import re
 import pandas as pd, numpy as np
 
 def method_group(s):
@@ -67,3 +68,17 @@ aud = (m.groupby(['method_group', 'methane_detection_method']).agg(n=('y', 'size
          .reset_index().sort_values(['method_group', 'n'], ascending=[True, False]))
 aud.to_csv(OUT / 'method_string_audit.csv', index=False)
 print('\nmethod strings:', len(aud), '-> outputs/method_string_audit.csv')
+
+
+# --- Hi-Flow maker/model named in the method string, by state (D18) ---
+mm = d.methane_detection_method.fillna('').astype(str)
+is_hf = mm.str.contains(r'hi.?flow|high.?flow|semtec|bacharach', case=False, regex=True)
+def hf_model(t):
+    t = t.lower()
+    if 'semtec' in t: return 'Semtech Hi-Flow 2 (named)'
+    if 'bacharach' in t: return 'Bacharach (named)'
+    if re.search(r'2\.0|flow ?2|flow ii', t): return 'Hi-Flow 2/II, maker not named'
+    return 'model not named'
+hf = pd.crosstab(d.loc[is_hf, 'st'], mm[is_hf].map(hf_model), margins=True)
+hf.to_csv(OUT / 'hiflow_model_by_state.csv')
+print('Hi-Flow records by named model:', hf.loc['All'].to_dict())
