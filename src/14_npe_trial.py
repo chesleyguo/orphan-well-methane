@@ -15,7 +15,7 @@ from scipy.special import expit, logit
 from scipy import stats
 from sbi.inference import NPE
 
-ap = argparse.ArgumentParser(); ap.add_argument('--n', type=int, default=20000); ap.add_argument('--sbc', type=int, default=200)
+ap = argparse.ArgumentParser(); ap.add_argument('--n', type=int, default=50000); ap.add_argument('--sbc', type=int, default=200)
 args = ap.parse_args()
 torch.manual_seed(0); rng = np.random.default_rng(1)
 P = OUT / 'npe_trial'; P.mkdir(exist_ok=True)

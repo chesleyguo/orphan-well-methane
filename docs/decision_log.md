@@ -158,8 +158,11 @@ log_sigma0 fails (p < 0.001, mean rank 0.43: slight upward bias), m0 (p = 0.011)
 are borderline. Posterior SD / prior SD: 0.27-0.34 for d0, m0, log_sigma0; 0.94-0.97 for tau_a and
 tau_m (between-state spread barely learned). Real-data values are a pipeline check only; the
 "average state" quantities are not comparable with the pilot's pooled-sample quantities.
-Next: more simulations and summary refinement until SBC passes for all parameters, as the
-analysis plan requires before any real-data result is used.
+Rerun with 50,000 simulations (default in outputs/npe_trial/ now): all 13 parameters pass SBC
+(smallest p = 0.076, rho; mean ranks 0.46-0.54), so the log_sigma0 failure was a simulation-budget
+issue, not a model defect. The between-state spreads tau_a, tau_m remain barely learned (posterior/prior
+SD 0.89-0.98); the full model needs state-level external data or tighter priors for them.
+The analysis plan's validation (MCMC comparison, leave-one-state-out) is still to come.
 
 ## Open decisions (to settle before freezing the analysis plan)
 
