@@ -12,10 +12,11 @@ data/raw/            frozen 2026-11-22 snapshot (do not edit; see MANIFEST.sha25
   usgs/              USGS 2022 DOW dataset (selection pool) and 2026 database subset
   states/            CO and NY bulk files; LA/NM/CA/WV query caches written by src/02
   research/          Driscoll et al. (2025) Louisiana chamber data (Zenodo)
-data/processed/      outputs of src/01–07 (regenerated; *.pkl are intermediates)
+data/reference/      literature-based reference tables (detection limits)
+data/processed/      outputs of src/01–08 (regenerated; *.pkl are intermediates)
 outputs/             tables and run log
 src/                 analysis scripts, run in numeric order from the repo root
-docs/                data notes and decision log
+docs/                data notes, detection limits, decision log
 ```
 
 ## Reproduce
@@ -29,6 +30,7 @@ python src/04_prediction_prioritization.py
 python src/05_attribute_value.py
 python src/06_driscoll_pairing.py
 python src/07_export_tables.py
+python src/08_detection_empirical.py    # detection by refined method group
 ```
 
 `src/00_download.py <date>` re-downloads everything into a new, separately dated folder; it never

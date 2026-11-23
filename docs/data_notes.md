@@ -33,4 +33,6 @@ Snapshot date: 2026-11-22. Data-handling choices are logged in `docs/decision_lo
   and state attributes.
 - `data/processed/usgs2022_inventory_linked.csv` — 2022 inventory with a `plugged` flag.
 - `outputs/driscoll_doi_pairs.csv` — wells measured by both methods.
+- `outputs/detection_by_method_empirical.csv`, `outputs/method_string_audit.csv` — detection by method
+  group and the raw method strings behind each group (see `docs/detection_limits.md`).
 - `outputs/run_log.txt` — console output of the scripts in `src/`.

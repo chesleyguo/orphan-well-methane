@@ -1,0 +1,77 @@
+method_group,methane_detection_method,n,detect
+FID (concentration),FID,4,4
+ND (ambiguous: no data or not detected),ND,70,1
+calculated,Calculated,13,1
+chamber / flow-through cell,Flow Through Cell,186,37
+federal guidelines (instrument unspecified),Federal Methane Measurement Guidelines,259,84
+flow meter + GC,Flowmeter and Gas Chromatograph,130,82
+flow meter + GC,Flowmeter a0 Gas Chromatograph,74,40
+hi-flow sampler,Hiflow/Method 21,291,60
+hi-flow sampler,"Hi-Flow 2, RMLD-CS",170,22
+hi-flow sampler,Semtech High Flow 2.0 Sampler ,96,30
+hi-flow sampler,High Flow Sampling,89,13
+hi-flow sampler,Hi-Flow II,61,21
+hi-flow sampler,High Flow Sampling (Semtech Hi-Flow 2),58,57
+hi-flow sampler,Semtec HiFlow,25,9
+hi-flow sampler,SemTech Hi-Flow 2/SemTech Hi-Flow 2,6,0
+hi-flow sampler,Semtech Hi-Flow Meter,6,4
+hi-flow sampler,Hi-Flow and OGI,3,3
+hi-flow sampler,Heath Remote Methane Leak Detector/SemTech Hi-Flow 2,2,0
+hi-flow sampler,Semtech,2,2
+hi-flow sampler,"Sniffer, High Flow Sampling",2,0
+hi-flow sampler,Hi-Flow (12/3/2023) RKI_GX-6000 Pre-PA(12/03/2023) Post-PA(08/12/2024),1,0
+hi-flow sampler,Hi-Flow 2,1,0
+hi-flow sampler,High Flow Sampling (SEMTECH HI-FLOW 2),1,1
+hi-flow sampler,MGGA (12/08/2022) Pre-PA:Ventbuster/ SEMTECH HiFlow (09/18/2023) Post-PA:PID CGM (05/23/2024),1,1
+hi-flow sampler,MGGA (12/14/2022) Hi-Flow (12/04/2023),1,0
+hi-flow sampler,N/A1/SemTech Hi-Flow 2,1,0
+hi-flow sampler,"SEM TECH Hi-Flow 2 (09/07/2022)/ MGGA (9/2/2022, 10/3/2022, 3/16/2023) Civitas PA(12/13/2023) 15 min bubble test",1,0
+laser analyzer (quantitative),Laser Absorption Spectroscopy,80,34
+laser analyzer (quantitative),MGGA (2/2/2023),2,2
+laser analyzer (quantitative),MGGA (03/09/2023),1,1
+laser analyzer (quantitative),MGGA (03/09/2023) CivitasPA (10/24/2024) 15 min bubble test,1,1
+laser analyzer (quantitative),MGGA (03/21/2023),1,1
+laser analyzer (quantitative),MGGA (09/02/2022),1,1
+laser analyzer (quantitative),"MGGA (09/07/2022, 03/28/2023)",1,0
+laser analyzer (quantitative),MGGA (11/16/2022),1,1
+laser analyzer (quantitative),MGGA (11/29/2022),1,1
+laser analyzer (quantitative),MGGA (8/3/2022),1,1
+laser analyzer (quantitative),MGGA (8/5/2022) Post plugging assessment 4/3/2024. Well plugged in 2023. Post plugging assessment (GEM 5000/PID) conducted on 4/3/24.,1,1
+laser analyzer (quantitative),MGGA (9/7/2022),1,1
+none,N/A,5040,0
+none,NR,417,0
+none,NP,338,0
+none,NA,184,0
+other / unspecified,Direct,33,7
+other / unspecified,Hi Flow II,5,0
+other / unspecified,Gem5000 Landtec,4,0
+other / unspecified,QRae 3 PGM-2500,4,0
+other / unspecified,EPA Method 21,3,3
+other / unspecified,SEM5000,3,0
+other / unspecified,MultiRAE by Honeywell,2,2
+other / unspecified,Drone Magnetometry,1,0
+other / unspecified,Flow Test,1,1
+other / unspecified,GEM 5000 and PID 5/15/24,1,1
+other / unspecified,Physically measured and extrapolated using Gaussian Plume Method,1,1
+other / unspecified,"Pre-plugging assessment conducted on 4/3/2024. GEM 5000, PID.",1,0
+other / unspecified,sampled but this well wasn't plugged yet,1,0
+screening: OGI camera,OGI,45,4
+screening: OGI camera,"FLIR Camera, RKI Eagle, Drone Magnetrometry, Utility Locate",2,0
+screening: OGI camera,"Flir GX320-24"" Pre-PA (07/09/2024) Post-PA (07/31/2024)",2,2
+screening: OGI camera,METHOD 21 AWP (OGI),2,2
+screening: OGI camera,Sniffer and OGI,2,0
+screening: OGI camera,"FLIR GF X320-24"" Pre-PA(04/16/2024, 04/26/2024) Post-PA(05232024)",1,1
+screening: handheld concentration detector,Sensit Gold 100 4 gas detector,377,0
+screening: handheld concentration detector,Bascom Turner,200,0
+screening: handheld concentration detector,AreaRAE Pro by Honeywell,32,20
+screening: handheld concentration detector,Eagle-2,18,1
+screening: handheld concentration detector,"Bascom-Turner Gas Rover Detector (Natural Gas Only, 1 ppm) #VGI-201",6,0
+screening: handheld concentration detector,In-situ methane Sniffer & Acoustic Camera/,6,0
+screening: handheld concentration detector,4-Gas Meter,4,0
+screening: handheld concentration detector,4-gas meter,2,0
+screening: handheld concentration detector,RKI Instuments GX/2012 monitor,2,0
+screening: handheld concentration detector,5-gas meter and soil gas samples with SUMMA canisters,1,0
+screening: handheld concentration detector,Sniffer,1,0
+screening: standoff laser (RMLD-type),RMLD- TDLAS,53,0
+screening: standoff laser (RMLD-type),"Altair 5x, Bascom Turner Explorer, or RMLD",15,0
+screening: standoff laser (RMLD-type),Laser Methane Device,12,0

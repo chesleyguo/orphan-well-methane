@@ -60,10 +60,27 @@ permit, not spud dates, so WV wells get no age. An earlier run had used them as 
 CRC32 instead of Python's salted `hash()`. Two full runs now give byte-identical logs
 (`outputs/run_log.txt`). Before this fix, AUCs varied by about ±0.02 between runs.
 
+## 2026-11-22 — detection limits
+
+**D14. Refined instrument grouping (proposed, not yet applied to D1–D13 results).** Auditing the 76
+method strings (`outputs/method_string_audit.csv`) showed misclassifications in `method_class`:
+"Semtech Hi-Flow Meter" fell into flow+GC; RMLD/TDLAS standoff lasers (no detections) fell into the
+quantitative laser class; several handheld detectors fell into "other". `src/08` adds `method_group`,
+which separates quantitative rate methods from screening devices. Adopt it when freezing the plan; the
+modeling sample and its numbers will then change slightly.
+
+**D15. "ND" is ambiguous.** 70 TX/WV records list "ND" as the method; it may mean "not detected"
+(a measured non-detect) rather than "no data". Kept separate; resolve with the states or DOI.
+
+**D16. Detection modeled as a probability, not a floor.** Groups report values below their nominal
+limits yet miss large leaks (Hi-Flow 0 vs chamber 40–48 g/h). Working priors for a detection
+threshold by group are in `docs/detection_limits.md` (judgment, to revisit). Screening-device zeros
+are not 0 g/h.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
-- Detection-limit prior for each method class (sources: DOI 2023 guidelines, Haase & Gianoutsos 2025,
-  Driscoll 2025 instruments).
+- Detection-limit priors: firm up the low-confidence rows (Hi-Flow, OGI, screening) with Zimmerle et al.
+  2020 and the 2023 Sensors five-method comparison.
 - High-emitter threshold (currently 10 g/h).
 - Treatment of the two ~46 kg/h Adams County, CO wells (keep; report leave-top-k-out).
 - Spatial-block size for cross-validation (currently 0.5°).
