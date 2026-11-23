@@ -16,7 +16,7 @@ data/reference/      literature-based reference tables (detection limits)
 data/processed/      outputs of src/01–08 (regenerated; *.pkl are intermediates)
 outputs/             tables and run log
 src/                 analysis scripts, run in numeric order from the repo root
-docs/                data notes, detection limits, state policies, decision log
+docs/                data notes, detection limits, state policies, decision log, analysis plan (pre-registration draft)
 ```
 
 ## Reproduce
