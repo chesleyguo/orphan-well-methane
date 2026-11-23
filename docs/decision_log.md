@@ -79,8 +79,9 @@ are not 0 g/h.
 
 ## Open decisions (to settle before freezing the analysis plan)
 
-- Detection-limit priors: firm up the low-confidence rows (Hi-Flow, OGI, screening) with Zimmerle et al.
-  2020 and the 2023 Sensors five-method comparison.
+- Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and
+  Zimmerle et al. 2020 (now medium confidence); handheld and RMLD-type screening still low confidence.
+- Which Hi-Flow model each state used (Bacharach vs Semtech) — matters for under-reporting at high rates.
 - High-emitter threshold (currently 10 g/h).
 - Treatment of the two ~46 kg/h Adams County, CO wells (keep; report leave-top-k-out).
 - Spatial-block size for cross-validation (currently 0.5°).

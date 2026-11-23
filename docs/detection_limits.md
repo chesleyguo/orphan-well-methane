@@ -10,10 +10,10 @@ priors are judgment calls from the sources below and should be revisited before 
 | --- | --- | --- | --- | --- | --- | --- |
 | Chamber / flow-through cell | 186 | 20% | 0.0004 | MFM chamber ≈ 0.77 g/h; high-precision chambers ≈ 0.0001 g/h | 0.001–0.5 | medium |
 | Flow meter + GC | 204 | 60% | 0.001 | DOI: limit must be ≤ 1 g/h | 0.001–0.1 | medium |
-| Hi-Flow sampler | 818 | 27% | 0.0003 | DOI ≤ 1 g/h; LA finds the leak with OGI first | 0.5–20 (effective) | low |
+| Hi-Flow sampler | 818 | 27% | 0.0003 | Instrument floor ≈ 0.6 g/h, accurate at 1 g/h if all gas is captured; LA finds the leak with OGI first | 0.6–2 if found; finding inherits OGI (20–150) | medium |
 | Laser analyzer (quantitative) | 92 | 49% | 1.0 | DOI lists as high sensitivity | 0.5–3 | medium |
 | Federal guidelines (unspecified) | 259 | 32% | 0.7 | Non-detects recorded as < 1 g/h | 0.7–1.5 | medium |
-| Screening: OGI camera | 54 | 17% | 1.0 | Less sensitive; accuracy falls with distance | 5–100 | low |
+| Screening: OGI camera | 54 | 17% | 1.0 | 50% detection ≈ 20 g/h at 6 m; 90% ≈ 135 g/h for experienced surveyors | 20–150 (50% point) | medium |
 | Screening: handheld detector | 649 | 3% | 0.02 | ≤ 100 ppm at the source; non-detect assumed ≤ 1 g/h | 1–50 (effective) | low |
 | Screening: standoff laser (RMLD) | 80 | 0% | — | ≤ 100 ppm-m at 1 m | 1–50 (effective) | low |
 
@@ -25,10 +25,15 @@ Excluded or undecided: calculated (13), FID (4), other/unspecified (60), "ND" (7
    (Hi-Flow down to 0.0003 g/h), yet miss large leaks. The measurement model should use a detection
    probability that rises with the true rate, with a group-specific midpoint drawn from the prior above,
    rather than a hard cut-off.
-2. **Hi-Flow is the weakest link and the largest quantitative group.** In Louisiana the Hi-Flow only
-   measures leak points an OGI camera has found, so its effective limit inherits OGI's. The two paired
-   wells where Hi-Flow recorded 0 while a chamber measured 40–48 g/h, and the 23% vs 96% detection gap
-   reported by LSU, both point the same way.
+2. **Hi-Flow is the weakest link and the largest quantitative group, but the instrument is not the
+   problem.** In a controlled test at 1 g/h the Hi-Flow was within about 2% of the true rate, and its
+   stated lower bound is 0.6 g/h; the authors name capturing all of the gas as the main limitation.
+   In Louisiana the Hi-Flow only measures leak points an OGI camera has found, so detection inherits
+   OGI's limit (50% detection ≈ 20 g/h at 6 m). Model it in two stages: was the leak point found, and
+   if so, was it quantified. This fits the two paired wells (Hi-Flow 0, chamber 40–48 g/h) and the
+   23% vs 96% detection gap reported by LSU. At the top end, Bacharach Hi-Flow units can under-report
+   by up to about 100× above ~0.4 scfm (≈ 460 g/h) through sensor-transition failure, so the largest
+   Hi-Flow values may be biased low if that model was used.
 3. **Screening devices do not measure rates.** Handheld detectors and RMLD-type lasers give
    concentrations. Their zeros should enter the model as "below an unknown threshold", or be left out
    of the rate likelihood; they should never be read as 0 g/h. DOI's own rule assumes non-detects are
@@ -55,10 +60,23 @@ Read for this table:
 - Agogino, A. M., et al. (2024). IMECE2024-145130. OGI detection accuracy declines with distance
   (GasVid leaks 5.3–2,051.6 g/h at 4.6–18.6 m).
 
-Still to read (would firm up the low-confidence rows):
+- Riddick, S. N., Mbua, M., Riddick, J. C., Houlihan, C., Hodshire, A. L., & Zimmerle, D. J. (2023).
+  Uncertainty quantification of methods used to measure methane emissions of 1 g CH4 h⁻¹. *Sensors*
+  23(22), 9246. Hi-Flow +2.2% at 1 g/h (lower bound 0.6 g/h); chambers within ≈ ±6%; capture is the
+  main Hi-Flow limitation; earlier work found under-estimation at 40–200 g/h.
+- Ravikumar, A. P., et al. (2018). "Good versus good enough?" *ES&T* 52, 2368–2374. OGI median
+  detection limit ≈ 20 g/h at 6 m; detection limit grows with distance as a power law.
+- Zimmerle, D., Vaughn, T., Bell, C. S., Bennett, K., Deshmukh, P., & Thoma, E. (2020). Detection
+  limits of optical gas imaging for natural gas leak detection in realistic controlled conditions.
+  *ES&T*. 90% detection at ≈ 7 scfh (5.6–19.5) for experienced surveyors, ≈ 10× earlier estimates.
+- Howard, T., et al. (2015). Sensor transition failure in the Bacharach Hi-Flow Sampler. Under-reporting
+  by up to two orders of magnitude above ≈ 0.4 scfm.
 
-- Zimmerle, D., et al. (2020). Detection limits of optical gas imaging for natural gas leak detection
-  in realistic controlled conditions (cited in the DOI guidelines) — OGI detection-probability curves.
-- The 2023 *Sensors* study comparing five methods at ~1 g/h (PMC10675349) — Hi-Flow and chamber
-  uncertainty at low rates.
+Unit note: 1 scfm of methane ≈ 19.2 g/min, so 1 scfh ≈ 19.2 g/h (7 scfh ≈ 135 g/h; 0.4 scfm ≈ 460 g/h).
+Natural gas is mostly but not entirely methane, so these conversions are upper bounds.
+
+Still to read:
+
 - Pekney et al. (2018), Hillman State Park — the Hi-Flow adaptation used in Louisiana.
+- A source for handheld concentration detectors and RMLD-type lasers expressed as a flow rate
+  (the rows still marked low confidence).
