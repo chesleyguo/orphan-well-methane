@@ -1,0 +1,12 @@
+# regenerated intermediates
+data/processed/*.pkl
+data/processed/Wells.dbf
+data/processed/doi_wells_enriched.csv
+__pycache__/
+*.pyc
+.DS_Store
+# separately dated re-downloads (keep out unless deliberately added)
+data/raw_*/
+
+# local notes — never commit
+docs/private/
