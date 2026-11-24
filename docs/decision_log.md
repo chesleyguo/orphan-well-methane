@@ -178,6 +178,14 @@ Decision: the measurement model gets a reporting-error term (a small probability
 leak is reported as zero, and a multiplicative error on reported values), with priors from these
 202 pairs; the analysis plan will be updated before freezing.
 
+**D29. Simulator v0.2 (src/sim/model.py).** Adds: method mix by state x period (periods split at
+2023-07-07 and 2025-07-11; 70 undated wells assigned to the middle period); the reporting-error
+mixture (omega, kappa, s_r); LA Hi-Flow quantization to 1.1504 g/h steps; the 4 usable Driscoll-DOI
+pairs; and the 188 non-averaged New Mexico memo-record pairs. 16 parameters, 226 summaries,
+0.013 s per simulation. Prior predictive: 6 of 226 real summaries outside the 99% range, all from
+states with very few measured wells (NY, OH, AL, MT). Marginal information: omega 0.57, kappa 0.70,
+s_r 0.34; p_find rises to 0.42.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
 - Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and

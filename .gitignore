@@ -15,3 +15,4 @@ docs/private/
 CLAUDE.md
 sbi-logs/
 data/raw/states/nm_ocd_memos.jsonl
+outputs/sim/timing.txt

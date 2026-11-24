@@ -76,9 +76,10 @@ prior.
    from `data/reference/detection_limits.csv`; otherwise reported as zero / non-detect.
 5. Rounding and quantization as interval censoring (Section 2).
 6. Reporting error between the contractor's reading and the program record (D28): with probability
-   omega a measured leak is recorded as zero, omega ~ Beta(1, 30); otherwise the recorded value is the
-   reading times exp(r), r ~ Normal(0, s_r), s_r ~ Normal+(0, 0.3). Priors checked against the 202 New
-   Mexico memo-record pairs (4 recorded as zero, most within 5%).
+   omega a measured leak is recorded as zero, omega ~ Beta(1, 30); with probability kappa the record is
+   the reading times exp(r), r ~ Normal(0, s_r), kappa ~ Beta(1, 9), s_r ~ Normal+(0, 0.7); otherwise
+   it is recorded exactly. A mixture, because in the 188 New Mexico memo-record pairs most values match
+   exactly while a minority differ widely (4 of 51 leaks above 1 g/h recorded as zero).
 
 External calibration enters as additional observations of the same model: the 5 Driscoll pairs
 (chamber reading with L = 0.001 g/h and p_find = 1, plus the DOI reading at the later visit), the
@@ -139,4 +140,5 @@ visits for s_v only (those wells were chosen because they leak).
 
 ## Deviations log
 
-(none yet; draft edited on 2026-11-23 before freezing to add the reporting-error term, D28)
+(none yet; draft edited on 2026-11-23 before freezing to add the reporting-error term, D28, and to
+make it a mixture after the New Mexico pairs showed most records exact; D29)

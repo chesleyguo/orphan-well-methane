@@ -201,29 +201,31 @@ plug 30%: break-even $/screened well at L=0.01: 23723 | L=1: 23714 | L=50: 23482
 median reported plugging cost per well, all states: $24678
 figures written to outputs/pilot
 == 12
-states: 25 | inventory wells: 112716 | DOI wells: 13021 | summaries: 215 | parameters: 13
-seconds per simulation: 0.011 (10,000 sims ~ 2 min)
-summaries outside the 99% prior predictive range: 6 of 215
+states: 25 | inventory wells: 112716 | DOI wells: 13021 | summaries: 226 | parameters: 16
+summaries outside the 99% prior predictive range: 6 of 226
          summary  observed  prior_q05  prior_q50  prior_q95  quantile_of_observed
- detect_quant_NY     1.000        0.0      0.071      0.549                 0.996
- detect_quant_OH     1.000        0.0      0.085      0.520                 0.997
-detect_screen_NM     1.000        0.0      0.000      0.000                 0.995
-detect_screen_OH     1.000        0.0      0.035      0.455                 0.998
+ detect_quant_NY     1.000        0.0      0.061      0.565                 0.997
+ detect_quant_OH     1.000        0.0      0.083      0.539                 0.996
+detect_screen_OH     1.000        0.0      0.031      0.455                 1.000
        logq50_AL     4.720      -12.0    -12.000    -12.000                 0.997
-       logq90_MT     6.564      -12.0    -12.000    -12.000                 0.997
+       logq90_AL     5.621      -12.0    -12.000    -12.000                 0.996
+       logq90_MT     6.564      -12.0    -12.000    -12.000                 0.998
 
 parameter information (max |Spearman| between parameter and any summary):
  parameter  max_abs_rank_corr   most_informative_summary
         a0               0.78            driscoll_detect
-     tau_a               0.34    between_state_sd_detect
-     b_gas               0.37                 detect_gas
-        m0               0.83              pooled_logq50
-     tau_m               0.29    between_state_sd_logq50
-     g_gas               0.15                  logq50_MI
-log_sigma0               0.64              pooled_logq99
-        d0               0.74              plug_share_OK
+     tau_a               0.30    between_state_sd_detect
+     b_gas               0.39                 detect_gas
+        m0               0.82              pooled_logq10
+     tau_m               0.24    between_state_sd_logq50
+     g_gas               0.14                 detect_gas
+log_sigma0               0.62              pooled_logq99
+        d0               0.75              plug_share_CA
      tau_d               0.87      between_state_sd_plug
-     tau_u               0.69                 cell_sd_PA
-       rho               0.51 la_hiflow_vs_chamber_ratio
-    p_find               0.37 la_hiflow_vs_chamber_ratio
+     tau_u               0.70                 cell_sd_PA
+       rho               0.45 la_hiflow_vs_chamber_ratio
+    p_find               0.42 la_hiflow_vs_chamber_ratio
        s_v               0.90       mt_within_well_logsd
+     omega               0.57            nm_zeroed_share
+     kappa               0.70               nm_off_share
+       s_r               0.34               nm_off_logsd

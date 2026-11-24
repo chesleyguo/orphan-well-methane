@@ -23,7 +23,8 @@ theta = sample_prior(rng, N)
 t0 = time.time()
 sims = np.array([simulate(th, design, rng) for th in theta])
 dt = (time.time() - t0) / N
-print('seconds per simulation: %.3f (10,000 sims ~ %.0f min)' % (dt, dt * 1e4 / 60))
+(OUT / 'sim').mkdir(exist_ok=True)   # timing depends on the machine: kept out of the run log
+(OUT / 'sim' / 'timing.txt').write_text('seconds per simulation: %.4f\n' % dt)
 
 q = (sims < s_obs).mean(0) + 0.5 * (sims == s_obs).mean(0)
 pp = pd.DataFrame({'summary': names, 'observed': s_obs, 'prior_q05': np.quantile(sims, .05, 0),
