@@ -1,0 +1,13 @@
+family,statistic,observed,pred_median,pred_q05,pred_q95,inside_90
+lognormal,share > 10 g/h,0.2652,0.06061,0.02273,0.09091,False
+lognormal,share > 100 g/h,0.1136,0.01515,0,0.03788,False
+lognormal,share > 1000 g/h,0.01515,0,0,0.01515,True
+lognormal,max g/h,1368,942.5,69.81,2.944e+04,True
+logt,share > 10 g/h,0.2652,0.05303,0.02273,0.09848,False
+logt,share > 100 g/h,0.1136,0.01515,0,0.04545,False
+logt,share > 1000 g/h,0.01515,0,0,0.01515,True
+logt,max g/h,1368,780.5,71.3,4.376e+04,True
+mix2,share > 10 g/h,0.2652,0.06061,0.0303,0.09848,False
+mix2,share > 100 g/h,0.1136,0.01515,0,0.03788,False
+mix2,share > 1000 g/h,0.01515,0,0,0.01515,True
+mix2,max g/h,1368,841.7,74.31,3.234e+04,True

@@ -145,3 +145,6 @@ make it a mixture after the New Mexico pairs showed most records exact; D29)
 
 Pre-freeze notes on validation (2026-11-24): SBC uses 200 held-out simulations, not 300 (src/15);
 the NUTS-vs-NPE comparison also reports SD ratios, and its result (D32) fails the median rule.
+Tail check (D35): a two-component log-normal mixture is added as a second alternative family, and the
+held-out tail check also reports the count summed over folds; decision values are reported with leak
+rates capped at 1 kg/h and 50 kg/h.

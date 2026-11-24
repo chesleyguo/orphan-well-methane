@@ -41,6 +41,7 @@ python src/14_npe_trial.py              # TRIAL neural posterior estimation + SB
 python src/15_npe_ensemble.py           # ensemble of 5 flows: SBC + expected coverage; real-data draws
 python src/16_decision.py               # decision analysis: policies P0-P3, break-even c*(L, p_find), E6
 python src/17_mcmc_reduced.py           # NUTS vs NPE on a reduced exact-likelihood model; leave-one-state-out
+python src/18_tail_check.py             # tail family: log-normal vs log-t vs mixture; held-out top tail; Driscoll
 ```
 
 `src/00_download.py <date>` re-downloads everything into a new, separately dated folder; it never

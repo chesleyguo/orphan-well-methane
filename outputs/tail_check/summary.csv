@@ -1,0 +1,4 @@
+family,elpd_heldout,divergences_folds,divergences_full,tail_inside_90,tail_checks,driscoll_inside_90,mean_leaking_g_h_median,mean_leaking_g_h_q05,mean_leaking_g_h_q95
+lognormal,-2877,0,0,10,10,2,375.2,102.3,2161
+logt,-2878,0,0,10,10,2,1561,263,3.172e+04
+mix2,-2878,0,0,10,10,2,379.9,73.49,2291

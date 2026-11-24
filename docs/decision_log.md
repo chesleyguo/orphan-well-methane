@@ -258,6 +258,27 @@ cap 1 kg/h and $227k (83-592k) at cap 50 kg/h; x 2,259 wells: $63M and $513M. Ne
 log-Student-t tail and a held-out check of the top 1% (Sec. 3), and a two-component (low/high)
 leak-rate mixture as an alternative; until then the cap is the stated sensitivity.
 
+**D35. Tail family check (src/18): the DOI records cannot choose the tail; the extreme tail looks
+lighter than log-normal; a no-selection fit badly under-predicts the Driscoll random sample.**
+Reduced exact-likelihood model (as D32), NUTS, 5-fold held-out by well, three families: log-normal
+(primary), log-Student-t (pre-specified alternative), and a two-component log-normal mixture (added:
+low/high emitters). Held-out log predictive density -2877.1 / -2878.3 / -2878.1: no difference. Log-t
+nu = 31 (16-62), i.e. close to normal. Held-out counts above 1 kg/h and 10 kg/h: inside the 90%
+predictive interval in 10 of 10 folds for every family, so by the plan's rule the log-normal stays
+primary. But summed over folds, every family predicts 7-10 records above 10 kg/h where 2 are observed
+(and 32-34 above 1 kg/h vs 27): the extreme tail is lighter than any of the three families allows.
+Driscoll (132 unplugged LA wells, chamber; mean 57 g/h, median 0.18 g/h), predicted from the full
+reduced fit: share > 10 g/h 6% (2-10%) vs 26.5% observed; > 100 g/h 1.5% (0-4%) vs 11.4%; both outside
+for all families. A model fitted only to measured, plugged wells, without selection, understates the
+moderate leaks in a random sample of unplugged wells by a factor of 4-8; the full simulator (which uses
+Driscoll and has selection) puts rho at -0.8 and p_find at 0.78 (D33), the same direction. For the
+decision analysis: the mean rate is not pinned down by any family (log-normal 375 g/h per leaking well
+in an average state, 102-2,161; log-t 1,561), and the only unselected anchor, Driscoll, gives 57 g/h per
+LA well. The capped runs of D34 therefore stay the reported form; the 1 kg/h cap gives 76 g/h per
+candidate well, the same order as Driscoll; 50 kg/h is the upper bound. Pre-freeze plan change: the
+mixture is added as a second alternative family and the pooled (all-fold) tail count is added to the
+held-out check.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
 - Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and
