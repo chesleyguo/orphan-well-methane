@@ -1,0 +1,3 @@
+frac,label,gain_g_h_per_plugged_median,gain_g_h_per_plugged_q05,gain_g_h_per_plugged_q95,gain_vs_P2_g_h_per_plugged_median,gain_vs_P2_g_h_per_plugged_q05,gain_vs_P2_g_h_per_plugged_q95,pv_usd_per_plugged_median,pv_usd_per_plugged_q05,pv_usd_per_plugged_q95,pv_usd_after_rule_millions_median,pv_usd_after_rule_millions_q05,pv_usd_after_rule_millions_q95
+0.1,TRIAL,1271,465.5,3315,1284,462.9,3295,2.271e+05,8.315e+04,5.922e+05,513,187.8,1338
+0.3,TRIAL,337.1,120,869.3,320.6,122.3,882.8,6.023e+04,2.144e+04,1.553e+05,136.1,48.43,350.8

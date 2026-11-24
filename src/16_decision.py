@@ -18,7 +18,11 @@ Outputs (outputs/decision/):
   by_state.csv         P3 (Hi-Flow-like: L = 1 g/h, posterior p_find) gain over P2, per state
   fig_breakeven.png
 Until the NPE ensemble passes SBC and coverage (src/15), outputs are labelled TRIAL.
-Run from the repo root: python src/16_decision.py [--draws N] [--prior]
+  candidate_distribution.csv  mean, median and tail shares of the candidates' leak rates
+--cap C caps leak rates at C g/h (outputs/decision_capC/): the lognormal fitted to five orders of
+magnitude of detection limits has a log-SD near 4, so the mean is set by wells far above any recorded
+value (max 46 kg/h); the cap shows how much of the value rests on that extrapolation.
+Run from the repo root: python src/16_decision.py [--draws N] [--prior] [--cap C]
 """
 import sys, pathlib, argparse; sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from config import *
@@ -35,8 +39,9 @@ ap = argparse.ArgumentParser()
 ap.add_argument('--draws', type=int, default=200)
 ap.add_argument('--prior', action='store_true', help='use prior draws (pipeline test only)')
 ap.add_argument('--label', default='TRIAL')
+ap.add_argument('--cap', type=float, default=0, help='cap leak rates at this many g/h (0 = no cap)')
 args = ap.parse_args()
-P = OUT / 'decision'; P.mkdir(exist_ok=True)
+P = OUT / ('decision' + ('_cap%g' % args.cap if args.cap else '')); P.mkdir(exist_ok=True)
 rng = np.random.default_rng(16)
 
 # ---- value of 1 g/h avoided (same constants as the pilot and the analysis plan)
@@ -67,6 +72,9 @@ else:
 print('decision analysis on %d %s draws, %d candidate wells in %d states' % (len(th), label, N, S))
 
 
+TAIL = []
+
+
 def draw_wells(p):
     a_s = rng.normal(p['a0'], p['tau_a'], S); m_s = rng.normal(p['m0'], p['tau_m'], S)
     d_s = rng.normal(p['d0'], p['tau_d'], S); u_c = rng.normal(0, p['tau_u'], d['n_cells'])
@@ -77,7 +85,13 @@ def draw_wells(p):
     q = q * (1 - s1) / (q * (1 - s1) + (1 - q) * (1 - s0))            # condition on not yet plugged
     zz = rng.random(N) < q
     e = np.where(zz, np.exp(rng.normal(m_s[st] + p['g_gas'] * gas, sigma)), 0.0)
+    if args.cap:
+        e = np.minimum(e, args.cap)
     w0 = np.where(zz, s1, s0)                                           # P0 selection weights
+    tail = {'mean_g_h_per_well': e.mean(), 'median_leaking_g_h': np.median(e[e > 0]),
+            'share_gt_10': (e > 10).mean(), 'share_gt_1000': (e > 1000).mean(), 'share_gt_50000': (e > 5e4).mean(),
+            'top1pct_share_of_total': np.sort(e)[-len(e) // 100:].sum() / e.sum()}
+    TAIL.append(tail)
     mean_e = expit(a_s + p['b_gas'] * np.array([[0.], [1.]])) * np.exp(m_s + p['g_gas'] * np.array([[0.], [1.]]) + sigma ** 2 / 2)
     return e, w0, mean_e                                                # mean_e: [gas, state]
 
@@ -168,6 +182,9 @@ E6.insert(0, 'label', label); E6.to_csv(P / 'e6_rule_change.csv', float_format='
 BS = pd.DataFrame(bys).groupby(['state', 'n'])[['gain_per_screened_usd', 'p3_over_p2']].median().reset_index()
 BS.insert(0, 'label', label); BS.sort_values('gain_per_screened_usd', ascending=False).to_csv(P / 'by_state.csv', index=False, float_format='%.4g')
 
+T = pd.DataFrame(TAIL).quantile([.05, .5, .95]).T
+T.insert(0, 'label', label); T.to_csv(P / 'candidate_distribution.csv', float_format='%.4g')
+print('candidate wells, posterior predictive (5/50/95%):'); print(T.round(4).to_string())
 print('value per g/h avoided: $%.0f (PVF %.2f)' % (VALUE, PVF))
 print(pv.round(3).to_string())
 b1 = B[(B.frac == 0.1)]
@@ -183,12 +200,12 @@ INK, INK2, GRID, SURF = '#0b0b0b', '#52514e', '#e4e3df', '#fcfcfb'
 RAMP = {0.25: '#a9c8f0', 0.5: '#6aa1e6', 0.75: '#2a78d6', 1.0: '#1a4f94'}
 plt.rcParams.update({'font.size': 10, 'axes.edgecolor': GRID, 'axes.labelcolor': INK2, 'xtick.color': INK2,
                      'ytick.color': INK2, 'axes.facecolor': SURF, 'figure.facecolor': SURF, 'font.family': 'DejaVu Sans'})
-fig, ax = plt.subplots(figsize=(7.2, 4.4))
+fig, ax = plt.subplots(figsize=(7.2, 5.2))
 for pf in PGRID:
     x = b1[b1.p_find == pf]
     if pf == 1.0:
         ax.fill_between(x.L, x.q05, x.q95, color=RAMP[pf], alpha=0.15, lw=0)
-    ax.plot(x.L, x['median'], color=RAMP[pf], lw=2, label='leak found with probability %.2f' % pf)
+    ax.plot(x.L, x['median'], color=RAMP[pf], lw=2, label='%.2f' % pf)
 for L, name in ((0.001, 'chamber'), (1, 'Hi-Flow'), (10, 'handheld'), (50, 'OGI')):
     ax.axvline(L, color=GRID, lw=1, zorder=0)
     ax.text(L, ax.get_ylim()[1] * 0.98, name, fontsize=8, color=INK2, ha='center', va='top',
@@ -196,11 +213,13 @@ for L, name in ((0.001, 'chamber'), (1, 'Hi-Flow'), (10, 'handheld'), (50, 'OGI'
 ax.set_xscale('log'); ax.set_ylim(bottom=0)
 ax.set_xlabel('Detection limit of the screening measurement (g/h)')
 ax.set_ylabel('Break-even cost per screened well (US$)')
-ax.set_title('What one screening visit is worth, budget = 10%% of candidates (%s)' % label, loc='left', color=INK, fontsize=11)
+ax.set_title('Break-even cost of one screening visit, 10%% budget\n(%s%s)'
+             % (label, '; leak rates capped at {:,.0f} g/h'.format(args.cap) if args.cap else '; no cap on leak rates'),
+             loc='left', color=INK, fontsize=10.5)
 ax.grid(True, which='major', color=GRID, lw=0.8); ax.set_axisbelow(True)
 for sp in ('top', 'right'): ax.spines[sp].set_visible(False)
 ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: '${:,.0f}'.format(v)))
-ax.legend(frameon=False, fontsize=9, loc='upper right')
-fig.text(0.01, 0.01, 'Posterior median over %d draws; band: 90%% interval at p=1. SC-CH4 $%.0f/t, %d yr, decline %.1f%%/yr. '
-         'Compared with ranking by state and well type.' % (len(th), SCC, YEARS, DECLINE * 100), fontsize=7.5, color=INK2)
-fig.tight_layout(rect=(0, 0.03, 1, 1)); fig.savefig(P / 'fig_breakeven.png', dpi=200); plt.close(fig)
+ax.legend(frameon=False, fontsize=8.5, loc='upper left', bbox_to_anchor=(0, -0.17), ncol=2, title='Probability a leak is found', title_fontsize=8.5)
+fig.text(0.01, 0.01, 'Posterior median over %d draws; band: 90%% interval at p = 1. SC-CH4 $%.0f/t, %d yr, decline %.1f%%/yr.\n'
+         'Baseline: ranking by state and well type.' % (len(th), SCC, YEARS, DECLINE * 100), fontsize=7.5, color=INK2)
+fig.tight_layout(rect=(0, 0.05, 1, 1)); fig.savefig(P / 'fig_breakeven.png', dpi=200); plt.close(fig)

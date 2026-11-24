@@ -231,6 +231,33 @@ are CA's 10% quantile (observed lower), NM's 90% quantile (observed 7.3 vs upper
 had 1,000 divergences) and CO's detection share (0.66 vs upper 0.55), consistent with CO being a
 high-emission state. The intervals are wide (tau_a ~2.9), so passing says little.
 
+**D33. NPE ensemble on simulator v0.2 passes SBC and coverage.** Five flows (seeds 100-104, 100,000
+simulations, 100 hidden units), posteriors mixed equally. On 200 held-out simulations: SBC passes for
+all 16 parameters by the plan's rule (20 rank bins, chi-square p >= 0.01; also all p > 0.05); expected
+coverage of 90% intervals 0.86-0.94, of 50% intervals 0.44-0.55. Posterior predictive check on the real
+summaries: 2 of 226 outside the 99% range (about what chance gives): Pennsylvania screening detections
+(observed 0; PA screening records are placeholders, D20) and the Driscoll 10% quantile (observed
+lower than predicted: the chamber finds more very small leaks than the log-normal allows). Real-data
+posterior (median, 90%): a0 3.4 (2.2-4.7), i.e. almost every well leaks at some rate; log_sigma0 1.43
+(1.35-1.53), i.e. a log-SD of about 4.2; p_find 0.78 (0.62-0.90); rho -0.81 (-1.55, 0.27); omega 0.06;
+kappa 0.18. Still TRIAL: D32 shows that summary-based NPE is wider than the exact posterior on the
+reduced model, so calibrated here may still mean inefficient.
+
+**D34. Decision results are set by the upper tail; reported with caps.** With the D33 posterior and no
+cap, the mean leak rate per candidate well is in the kg/h range, because a log-normal with log-SD ~4.2
+puts mass far above any recorded value (DOI max 46 kg/h; Driscoll max 1.4 kg/h, 1.5% of wells > 1 kg/h).
+The model's share > 10 g/h among candidates (25%, 17-35%) matches Driscoll's random LA sample (26%);
+its share > 1 kg/h (4.4%) is about three times Driscoll's. Uncapped values are therefore not reported.
+src/16 gains --cap; runs at 50 kg/h and 1 kg/h (100 draws each). Robust across caps: P0 (observed
+selection), P1 (random) and P2 (rank by state and well type) avoid the same ~10% of emissions with a
+10% budget; one screening visit then ranking by the reading (P3) avoids 67-77%; the oracle 84-98%.
+Break-even cost per screened well c* is flat in the detection limit up to ~100 g/h and scales with
+p_find: cap 1 kg/h $2.0k / 5.0k / 7.5k / 9.3k at p_find 0.25 / 0.5 / 0.75 / 1; cap 50 kg/h $15k / 38k
+/ 62k / 85k. E6 (screening with the 2023-2025 method mix vs P0, per plugged well): $28k (15-39k) at
+cap 1 kg/h and $227k (83-592k) at cap 50 kg/h; x 2,259 wells: $63M and $513M. Next: the plan's
+log-Student-t tail and a held-out check of the top 1% (Sec. 3), and a two-component (low/high)
+leak-rate mixture as an alternative; until then the cap is the stated sensitivity.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
 - Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and

@@ -1,0 +1,7 @@
+,label,0.05,0.5,0.95
+mean_g_h_per_well,TRIAL,39.53,75.96,124.1
+median_leaking_g_h,TRIAL,0.1313,0.5829,2.333
+share_gt_10,TRIAL,0.1691,0.2494,0.3471
+share_gt_1000,TRIAL,0,0,0
+share_gt_50000,TRIAL,0,0,0
+top1pct_share_of_total,TRIAL,0.08059,0.1317,0.2531

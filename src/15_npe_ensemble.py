@@ -79,7 +79,7 @@ levels = np.linspace(0.05, 0.95, 19)
 for i in range(args.n, args.n + args.sbc):
     s = sample(X[i], 500)
     ranks.append((s < U[i]).sum(0))
-    lo = np.quantile(s, 0.5 - levels[:, None] / 2, axis=0); hi = np.quantile(s, 0.5 + levels[:, None] / 2, axis=0)
+    lo = np.quantile(s, 0.5 - levels / 2, axis=0); hi = np.quantile(s, 0.5 + levels / 2, axis=0)
     cover.append((lo <= U[i]) & (U[i] <= hi))
 ranks, cover = np.array(ranks), np.array(cover).mean(0)
 res = []
@@ -97,3 +97,15 @@ draws = from_u(sample(x_obs, 4000).astype(float))
 np.savez_compressed(W / 'real_posterior_draws.npz', theta=draws, names=np.array(NAMES))
 pd.DataFrame({'parameter': NAMES, 'median': np.median(draws, 0), 'q05': np.quantile(draws, .05, 0),
               'q95': np.quantile(draws, .95, 0)}).to_csv(P / 'real_data_posterior_TRIAL.csv', index=False, float_format='%.4g')
+
+# ---- posterior predictive check on the real summaries (same rule as the prior check in src/12)
+from sim.model import simulate, summary_names
+rng = np.random.default_rng(15)
+sims = np.array([simulate(t, design, rng) for t in draws[rng.choice(len(draws), 500, replace=False)]])
+lo, hi = np.quantile(sims, [.005, .995], axis=0)
+out = (x_obs < lo) | (x_obs > hi)
+ppc = pd.DataFrame({'summary': summary_names(design), 'observed': x_obs, 'q005': lo, 'q50': np.median(sims, 0), 'q995': hi,
+                    'outside_99': out})
+ppc.to_csv(P / 'posterior_predictive_TRIAL.csv', index=False, float_format='%.4g')
+print('posterior predictive: %d of %d real summaries outside the 99%% range' % (out.sum(), len(out)))
+print(ppc[out].round(3).to_string(index=False))
