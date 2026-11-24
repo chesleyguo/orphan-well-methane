@@ -186,6 +186,15 @@ pairs; and the 188 non-averaged New Mexico memo-record pairs. 16 parameters, 226
 states with very few measured wells (NY, OH, AL, MT). Marginal information: omega 0.57, kappa 0.70,
 s_r 0.34; p_find rises to 0.42.
 
+**D30. NPE on simulator v0.2: SBC not yet passing for all parameters.** 50,000 simulations: 12 of 16
+pass; a0 and m0 fail (p < 0.001) with opposite mean-rank shifts (0.42, 0.59). 100,000 simulations
+(50,000 reused + 50,000 new, seed 2) and a wider flow (100 hidden units): a0 and m0 now pass, but d0
+(p = 0.001), p_find (0.004), rho (0.013) and g_gas (0.046) fail, with mean ranks 0.47-0.54, i.e.
+mis-calibrated width rather than bias, and the failing set changes between runs. Read as estimator
+variance of a single trained flow. Next, before any real-data use: an ensemble of 5 flows (different
+seeds), expected-coverage curves alongside SBC histograms, and, if needed, a learned embedding of the
+summaries. Real-data values from these runs are not used.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
 - Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and

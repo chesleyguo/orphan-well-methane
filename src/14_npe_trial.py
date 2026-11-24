@@ -14,8 +14,9 @@ import numpy as np, pandas as pd, torch
 from scipy.special import expit, logit
 from scipy import stats
 from sbi.inference import NPE
+from sbi.neural_nets import posterior_nn
 
-ap = argparse.ArgumentParser(); ap.add_argument('--n', type=int, default=50000); ap.add_argument('--sbc', type=int, default=200)
+ap = argparse.ArgumentParser(); ap.add_argument('--n', type=int, default=100000); ap.add_argument('--sbc', type=int, default=200); ap.add_argument('--hidden', type=int, default=100)
 args = ap.parse_args()
 torch.manual_seed(0); rng = np.random.default_rng(1)
 P = OUT / 'npe_trial'; P.mkdir(exist_ok=True)
@@ -36,10 +37,16 @@ def from_u(u):
     return th
 
 design = build_design()
-t0 = time.time()
-theta = sample_prior(rng, args.n + args.sbc)
-X = np.array([simulate(t, design, rng) for t in theta])
-print('simulated %d datasets in %.0f s' % (len(X), time.time() - t0))
+cache = PROC / ('npe_sims_v%d_n%d.npz' % (design['version'], args.n + args.sbc))
+if cache.exists():
+    z0 = np.load(cache); theta, X = z0['theta'], z0['X']
+    print('loaded %d cached simulations' % len(X))
+else:
+    t0 = time.time()
+    theta = sample_prior(rng, args.n + args.sbc)
+    X = np.array([simulate(t, design, rng) for t in theta])
+    np.savez_compressed(cache, theta=theta, X=X)
+    print('simulated %d datasets' % len(X))
 x_obs = real_summaries(design)
 
 keep = X[:args.n].std(0) > 1e-9
@@ -50,7 +57,8 @@ umu, usd = U[:args.n].mean(0), U[:args.n].std(0)
 
 prior = torch.distributions.Independent(torch.distributions.Normal(torch.tensor(umu, dtype=torch.float32),
                                                                    torch.tensor(3 * usd, dtype=torch.float32)), 1)
-inf = NPE(prior=prior, density_estimator='nsf', show_progress_bars=False)
+inf = NPE(prior=prior, density_estimator=posterior_nn('nsf', hidden_features=args.hidden, num_transforms=5),
+          show_progress_bars=False)
 t0 = time.time()
 inf.append_simulations(torch.tensor(U[:args.n], dtype=torch.float32), torch.tensor(z(X[:args.n]), dtype=torch.float32))
 est = inf.train(max_num_epochs=300, training_batch_size=256)
