@@ -38,6 +38,9 @@ python src/12_sim_prior_check.py        # simulator skeleton (src/sim/): timing,
 # not in the deterministic pipeline (long-running / network):
 python src/13_nm_ocd_memos.py           # NM OCD contractor methane memos (download, text, parse)
 python src/14_npe_trial.py              # TRIAL neural posterior estimation + SBC (needs torch, sbi)
+python src/15_npe_ensemble.py           # ensemble of 5 flows: SBC + expected coverage; real-data draws
+python src/16_decision.py               # decision analysis: policies P0-P3, break-even c*(L, p_find), E6
+python src/17_mcmc_reduced.py           # NUTS vs NPE on a reduced exact-likelihood model; leave-one-state-out
 ```
 
 `src/00_download.py <date>` re-downloads everything into a new, separately dated folder; it never

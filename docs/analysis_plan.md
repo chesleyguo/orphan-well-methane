@@ -142,3 +142,6 @@ visits for s_v only (those wells were chosen because they leak).
 
 (none yet; draft edited on 2026-11-23 before freezing to add the reporting-error term, D28, and to
 make it a mixture after the New Mexico pairs showed most records exact; D29)
+
+Pre-freeze notes on validation (2026-11-24): SBC uses 200 held-out simulations, not 300 (src/15);
+the NUTS-vs-NPE comparison also reports SD ratios, and its result (D32) fails the median rule.

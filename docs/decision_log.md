@@ -195,6 +195,42 @@ variance of a single trained flow. Next, before any real-data use: an ensemble o
 seeds), expected-coverage curves alongside SBC histograms, and, if needed, a learned embedding of the
 summaries. Real-data values from these runs are not used.
 
+**D31. Decision-analysis module (src/16).** Implements analysis plan Sec. 5 on unplugged 2022-inventory
+wells (106,370 wells, 25 states). For each posterior draw, leak status is drawn conditional on the well
+not having been plugged (selection with rho), so leak-rule states' remaining wells leak slightly less.
+Each state plugs the top ceil(f x n_s) wells by policy score (f = 0.1, 0.3). P0 samples by the selection
+weights without replacement (Efraimidis-Spirakis keys); P2 ranks by the posterior mean emission by
+state x well type, averaged over draws (not the per-draw truth, which would be an oracle); P3 ranks
+detected wells by their one-visit reading (noise s_v) and fills the rest by P2; an oracle ranking by the
+true rate is reported as an upper bound. E5 grid: L = 10^-3 ... 10^4 g/h (15 points) x p_find
+{0.25, 0.5, 0.75, 1}. E6 draws each candidate's method from its state's 2023-07 to 2025-07 method mix
+(with leak finding and detection-limit uncertainty as in the simulator) and compares with P0, per
+plugged well; multiplied by the 2,259 DOI wells with witness dates on or after 2025-07-11. Value per
+g/h avoided: $179 (25 yr, 6.4%/yr decline, 2% discount, $1,900/t). Tested on prior draws only; real
+runs wait for the NPE ensemble (D30) and are labelled TRIAL until validation passes.
+
+**D32. Exact-likelihood check (src/17): reduced-model NPE is too wide; LOSO 13 of 16.** Reduced model
+(no selection, no reporting error, no quantization, fixed detection limits, s_v = 0.59) fitted by NUTS
+(2 chains x 1,000) and by an NPE trained on 20,000 simulations with summaries of the full simulator's
+kind (108). Six synthetic data sets from the prior. Data set 4 is a NUTS failure (2,000 divergences;
+one chain stuck) and is set aside. On the other five, NPE posterior means are close to NUTS (median
+|difference| 0.2-0.4 NUTS SD for a0, m0, g_gas, p_find, log_sigma0) but NPE is wider: SD ratio median
+1.3-2.1 for the main parameters and 3.6-7 for tau_a and tau_m. The pre-written criterion (|mean
+difference| < 0.3 SD and SD ratio 0.7-1.4 on 5 of 6 data sets; the plan's own rule is medians within
+0.25 SD) fails for every hyperparameter. Reading: the summaries lose information, above all about
+between-state spread, and 20,000 simulations are few for 108 summaries; the error is toward
+under-confidence, not bias. Consequence for the full model: SBC can pass while posteriors are wider than
+the data justify. Options, to decide with the advisor: (a) learned summary embedding and more
+simulations; (b) per-state summaries of the full positive-value distribution; (c) a hybrid, using NUTS
+for the tractable emission-and-measurement part and simulation only for selection. Real records under
+the reduced model (NUTS, 0 divergences): p_find 0.98 (0.94-0.995), log_sigma0 1.36 (sigma ~3.9),
+tau_a 2.9, b_gas -1.7; not results (the reduced model ignores selection and reporting error, and
+treats the 85 positive values below their method's limit as detections). Leave-one-state-out
+(population-level prediction of a held-out state): 13 of 16 statistics inside the 90% interval; misses
+are CA's 10% quantile (observed lower), NM's 90% quantile (observed 7.3 vs upper 6.3, log g/h; that fit
+had 1,000 divergences) and CO's detection share (0.66 vs upper 0.55), consistent with CO being a
+high-emission state. The intervals are wide (tau_a ~2.9), so passing says little.
+
 ## Open decisions (to settle before freezing the analysis plan)
 
 - Detection-limit priors: Hi-Flow and OGI updated from Riddick et al. 2023, Ravikumar et al. 2018 and

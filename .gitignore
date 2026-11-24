@@ -17,3 +17,4 @@ sbi-logs/
 data/raw/states/nm_ocd_memos.jsonl
 outputs/sim/timing.txt
 data/processed/npe_sims_*.npz
+data/processed/npe_ensemble/
